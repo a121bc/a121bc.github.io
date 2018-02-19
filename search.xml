@@ -1,17 +1,13 @@
 <?xml version="1.0" encoding="utf-8"?>
-<search> 
-  
-    
-    <entry>
-      <title>Hello World</title>
-      <link href="undefined2018/02/19/hello-world/"/>
-      <content type="html"><![CDATA[<p>Welcome to <a href="https://hexo.io/" target="_blank" rel="noopener">Hexo</a>! This is your very first post. Check <a href="https://hexo.io/docs/" target="_blank" rel="noopener">documentation</a> for more info. If you get any problems when using Hexo, you can find the answer in <a href="https://hexo.io/docs/troubleshooting.html" target="_blank" rel="noopener">troubleshooting</a> or you can ask me on <a href="https://github.com/hexojs/hexo/issues" target="_blank" rel="noopener">GitHub</a>.</p><h2 id="Quick-Start"><a href="#Quick-Start" class="headerlink" title="Quick Start"></a>Quick Start</h2><h3 id="Create-a-new-post"><a href="#Create-a-new-post" class="headerlink" title="Create a new post"></a>Create a new post</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo new <span class="string">"My New Post"</span></span><br></pre></td></tr></table></figure><p>More info: <a href="https://hexo.io/docs/writing.html" target="_blank" rel="noopener">Writing</a></p><h3 id="Run-server"><a href="#Run-server" class="headerlink" title="Run server"></a>Run server</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo server</span><br></pre></td></tr></table></figure><p>More info: <a href="https://hexo.io/docs/server.html" target="_blank" rel="noopener">Server</a></p><h3 id="Generate-static-files"><a href="#Generate-static-files" class="headerlink" title="Generate static files"></a>Generate static files</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo generate</span><br></pre></td></tr></table></figure><p>More info: <a href="https://hexo.io/docs/generating.html" target="_blank" rel="noopener">Generating</a></p><h3 id="Deploy-to-remote-sites"><a href="#Deploy-to-remote-sites" class="headerlink" title="Deploy to remote sites"></a>Deploy to remote sites</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo deploy</span><br></pre></td></tr></table></figure><p>More info: <a href="https://hexo.io/docs/deployment.html" target="_blank" rel="noopener">Deployment</a></p>]]></content>
-      
-      
-    </entry>
-    
-  
-  
-    
-  
+<search>
+  <entry>
+    <title><![CDATA[你好，Hexo]]></title>
+    <url>%2F2018%2F02%2F19%2F%E4%BD%A0%E5%A5%BD%EF%BC%8CHexo%2F</url>
+    <content type="text"><![CDATA[第一次写点什么呢，记录一下hexo博客的搭建过程吧。最开始是在GitHub上申请的账户，然后安装GitHubDesktop，下载了一个模板就没在动了。今天，一大早决定重新整一下博客，在知乎上发现了hexo，就按着教程安了几遍，教程有点旧，重新找了几篇，到现在也算是基本搭建好了，界面还不太美观，以后慢慢改吧。下面说一下简单的流程，记录一下。 ##什么是 Hexo？ Hexo 是一个快速、简洁且高效的博客框架。Hexo 使用 Markdown（或其他渲染引擎）解析文章，在几秒内，即可利用靓丽的主题生成静态网页。 ##安装前准备 请在安装之前检查是否安装下列应用程序： Node.js Git 以上安装很简单，官网进去后根据对应的系统下载相应版本即可。 ###确认安装环境 打开命令窗口（Win+R，输入CMD，回车），分别输入node -v，npm -v，git –version，结果如下图即安装好了。 ##开始安装 接下来进入已安装好的开始菜单栏下Git文件夹，运行Git Bash，然后运行下列代码： ###SSH授权 1$ ssh-keygen -t rsa 然后进入C盘用户文件夹下的.ssh文件夹，找到id_rsa和id_rsa.pub这两个文件，用记事本打开id_rsa.pub，复制其中的全部内容，到GitHub里，进入Setting，选择SSH andGPG keys，添加内容即可。 添加完成后，在git bash中测试，输入： 1ssh -T git@github.com 显示如下图，即成功： ###]]></content>
+  </entry>
+  <entry>
+    <title><![CDATA[Hello World]]></title>
+    <url>%2F2018%2F02%2F19%2Fhello-world%2F</url>
+    <content type="text"><![CDATA[Welcome to Hexo! This is your very first post. Check documentation for more info. If you get any problems when using Hexo, you can find the answer in troubleshooting or you can ask me on GitHub. Quick StartCreate a new post1$ hexo new "My New Post" More info: Writing Run server1$ hexo server More info: Server Generate static files1$ hexo generate More info: Generating Deploy to remote sites1$ hexo deploy More info: Deployment]]></content>
+  </entry>
 </search>
