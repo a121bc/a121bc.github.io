@@ -78,7 +78,7 @@
 <link href="/css/main.css?v=5.1.2" rel="stylesheet" type="text/css" />
 
 
-  <meta name="keywords" content="dubbo,Linux,SOA," />
+  <meta name="keywords" content="图片服务器,FastDFS,分布式," />
 
 
 
@@ -94,22 +94,30 @@
 
 
 
-<meta name="description" content="最近的项目用的是SOA架构，表现层和服务层是不同的工程。所以为了实现列表的查询需要多个系统间的通信。如何实现远程通信，目前有三种解决方案：  Webservice：效率不高基于soap协议。项目中不推荐使用。 使用restful形式的服务：http+json。很多项目中应用。如果服务太多，服务之间调用关系混乱，需要治疗服务。 使用dubbo。使用rpc协议进行远程调用，直接使用socket通信。">
-<meta name="keywords" content="dubbo,Linux,SOA">
+<meta name="description" content="项目中需要搭建一个图片服务器，专门用于保存图片，在线寻找成熟的技术，于是乎发现了FastDFS，网上关于FastDFS的学习资料很多，在此整理一下，复习一遍，方便以后再次使用。 FastDFS介绍FastDFS开源地址：https://github.com/happyfish100 什么是FastDFSFastDFS是用c语言编写的一款开源的分布式文件系统。FastDFS为互联网量身定制，充分考虑">
+<meta name="keywords" content="图片服务器,FastDFS,分布式">
 <meta property="og:type" content="article">
-<meta property="og:title" content="Dubbo学习笔记">
-<meta property="og:url" content="https://a121bc.github.io/2018/02/21/Dubbo学习笔记/index.html">
+<meta property="og:title" content="搭建图片服务器">
+<meta property="og:url" content="https://a121bc.github.io/2018/02/22/搭建图片服务器/index.html">
 <meta property="og:site_name" content="A121BC&#39;s Notes">
-<meta property="og:description" content="最近的项目用的是SOA架构，表现层和服务层是不同的工程。所以为了实现列表的查询需要多个系统间的通信。如何实现远程通信，目前有三种解决方案：  Webservice：效率不高基于soap协议。项目中不推荐使用。 使用restful形式的服务：http+json。很多项目中应用。如果服务太多，服务之间调用关系混乱，需要治疗服务。 使用dubbo。使用rpc协议进行远程调用，直接使用socket通信。">
+<meta property="og:description" content="项目中需要搭建一个图片服务器，专门用于保存图片，在线寻找成熟的技术，于是乎发现了FastDFS，网上关于FastDFS的学习资料很多，在此整理一下，复习一遍，方便以后再次使用。 FastDFS介绍FastDFS开源地址：https://github.com/happyfish100 什么是FastDFSFastDFS是用c语言编写的一款开源的分布式文件系统。FastDFS为互联网量身定制，充分考虑">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:image" content="https://a121bc.github.io/2018/02/21/Dubbo学习笔记/dubbo.jpg">
-<meta property="og:image" content="https://a121bc.github.io/2018/02/21/Dubbo学习笔记/dubbo.jpg">
-<meta property="og:image" content="https://a121bc.github.io/2018/02/21/Dubbo学习笔记/dubboproperties.png">
-<meta property="og:updated_time" content="2018-02-21T07:35:33.721Z">
+<meta property="og:image" content="https://a121bc.github.io/2018/02/22/搭建图片服务器/FastDFS.jpg">
+<meta property="og:image" content="https://a121bc.github.io/2018/02/22/搭建图片服务器/文件上传1.jpg">
+<meta property="og:image" content="https://a121bc.github.io/2018/02/22/搭建图片服务器/文件上传2.jpg">
+<meta property="og:image" content="https://a121bc.github.io/2018/02/22/搭建图片服务器/文件下载1.jpg">
+<meta property="og:image" content="https://a121bc.github.io/2018/02/22/搭建图片服务器/文件下载2.jpg">
+<meta property="og:image" content="https://a121bc.github.io/2018/02/22/搭建图片服务器/FastDFS架构.jpg">
+<meta property="og:image" content="https://a121bc.github.io/2018/02/22/搭建图片服务器/zip.jpg">
+<meta property="og:image" content="https://a121bc.github.io/2018/02/22/搭建图片服务器/gcc.jpg">
+<meta property="og:image" content="https://a121bc.github.io/2018/02/22/搭建图片服务器/gcc.jpg">
+<meta property="og:image" content="https://a121bc.github.io/2018/02/22/搭建图片服务器/fdfs.jpg">
+<meta property="og:image" content="https://a121bc.github.io/2018/02/22/搭建图片服务器/nginx.jpg">
+<meta property="og:updated_time" content="2018-02-22T11:40:45.755Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Dubbo学习笔记">
-<meta name="twitter:description" content="最近的项目用的是SOA架构，表现层和服务层是不同的工程。所以为了实现列表的查询需要多个系统间的通信。如何实现远程通信，目前有三种解决方案：  Webservice：效率不高基于soap协议。项目中不推荐使用。 使用restful形式的服务：http+json。很多项目中应用。如果服务太多，服务之间调用关系混乱，需要治疗服务。 使用dubbo。使用rpc协议进行远程调用，直接使用socket通信。">
-<meta name="twitter:image" content="https://a121bc.github.io/2018/02/21/Dubbo学习笔记/dubbo.jpg">
+<meta name="twitter:title" content="搭建图片服务器">
+<meta name="twitter:description" content="项目中需要搭建一个图片服务器，专门用于保存图片，在线寻找成熟的技术，于是乎发现了FastDFS，网上关于FastDFS的学习资料很多，在此整理一下，复习一遍，方便以后再次使用。 FastDFS介绍FastDFS开源地址：https://github.com/happyfish100 什么是FastDFSFastDFS是用c语言编写的一款开源的分布式文件系统。FastDFS为互联网量身定制，充分考虑">
+<meta name="twitter:image" content="https://a121bc.github.io/2018/02/22/搭建图片服务器/FastDFS.jpg">
 
 
 
@@ -138,13 +146,13 @@
 
 
 
-  <link rel="canonical" href="https://a121bc.github.io/2018/02/21/Dubbo学习笔记/"/>
+  <link rel="canonical" href="https://a121bc.github.io/2018/02/22/搭建图片服务器/"/>
 
 
 
 
 
-  <title>Dubbo学习笔记 | A121BC's Notes</title>
+  <title>搭建图片服务器 | A121BC's Notes</title>
   
 
 
@@ -321,7 +329,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="https://a121bc.github.io/2018/02/21/Dubbo学习笔记/">
+    <link itemprop="mainEntityOfPage" href="https://a121bc.github.io/2018/02/22/搭建图片服务器/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="a121bc">
@@ -338,7 +346,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">Dubbo学习笔记</h1>
+          <h1 class="post-title" itemprop="name headline">搭建图片服务器</h1>
         
 
         <div class="post-meta">
@@ -350,8 +358,8 @@
               
                 <span class="post-meta-item-text">发表于</span>
               
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-02-21T14:23:26+08:00">
-                2018-02-21
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-02-22T14:36:43+08:00">
+                2018-02-22
               </time>
             
 
@@ -390,7 +398,7 @@
 
           
           
-             <span id="/2018/02/21/Dubbo学习笔记/" class="leancloud_visitors" data-flag-title="Dubbo学习笔记">
+             <span id="/2018/02/22/搭建图片服务器/" class="leancloud_visitors" data-flag-title="搭建图片服务器">
                <span class="post-meta-divider">|</span>
                <span class="post-meta-item-icon">
                  <i class="fa fa-eye"></i>
@@ -421,55 +429,117 @@
       
 
       
-        <p><img src="/2018/02/21/Dubbo学习笔记/dubbo.jpg" alt="logo"></p>
-<p>最近的项目用的是SOA架构，表现层和服务层是不同的工程。所以为了实现列表的查询需要多个系统间的通信。如何实现远程通信，目前有三种解决方案：</p>
-<ul>
-<li>Webservice：效率不高基于soap协议。项目中不推荐使用。</li>
-<li>使用restful形式的服务：http+json。很多项目中应用。如果服务太多，服务之间调用关系混乱，需要治疗服务。</li>
-<li>使用dubbo。使用rpc协议进行远程调用，直接使用socket通信。传输效率高，并且可以统计出系统之间的调用关系、调用次数。</li>
-</ul>
+        <p>项目中需要搭建一个图片服务器，专门用于保存图片，在线寻找成熟的技术，于是乎发现了FastDFS，网上关于FastDFS的学习资料很多，在此整理一下，复习一遍，方便以后再次使用。</p>
+<h2 id="FastDFS介绍"><a href="#FastDFS介绍" class="headerlink" title="FastDFS介绍"></a>FastDFS介绍</h2><p>FastDFS开源地址：<a href="https://github.com/happyfish100" target="_blank" rel="noopener">https://github.com/happyfish100</a></p>
+<h3 id="什么是FastDFS"><a href="#什么是FastDFS" class="headerlink" title="什么是FastDFS"></a>什么是FastDFS</h3><p>FastDFS是用c语言编写的一款开源的分布式文件系统。FastDFS为互联网量身定制，充分考虑了冗余备份、负载均衡、线性扩容等机制，并注重高可用、高性能等指标，使用FastDFS很容易搭建一套高性能的文件服务器集群提供文件上传、下载等服务。</p>
 <a id="more"></a>
-<h2 id="什么是dubbo"><a href="#什么是dubbo" class="headerlink" title="什么是dubbo"></a>什么是dubbo</h2><p>Dubbo是阿里巴巴开源出来的一个分布式服务框架，致力于提供高性能和透明化的RPC远程服务调用方案，以及作为SOA服务治理的方案。它的核心功能包括：</p>
+<h3 id="FastDFS架构"><a href="#FastDFS架构" class="headerlink" title="FastDFS架构"></a>FastDFS架构</h3><p>FastDFS架构包括 Tracker server和Storage server。客户端请求Tracker server进行文件上传、下载，通过Tracker server调度最终由Storage server完成文件上传和下载。<br>Tracker server作用是负载均衡和调度，通过Tracker server在文件上传时可以根据一些策略找到Storage server提供文件上传服务。可以将tracker称为追踪服务器或调度服务器。<br>Storage server作用是文件存储，客户端上传的文件最终存储在Storage服务器上，Storage server没有实现自己的文件系统而是利用操作系统的文件系统来管理文件。可以将storage称为存储服务器。<br>如下图：</p>
+<p><img src="/2018/02/22/搭建图片服务器/FastDFS.jpg" alt="logo"></p>
+<p>服务端两个角色：<br>Tracker：管理集群，tracker也可以实现集群。每个tracker节点地位平等。<br>收集Storage集群的状态。<br>Storage：实际保存文件<br>Storage分为多个组，每个组之间保存的文件是不同的。每个组内部可以有多个成员，组成员内部保存的内容是一样的，组成员的地位是一致的，没有主从的概念。</p>
+<h3 id="Tracker-集群"><a href="#Tracker-集群" class="headerlink" title="Tracker 集群"></a>Tracker 集群</h3><p>FastDFS集群中的Tracker server可以有多台，Tracker server之间是相互平等关系同时提供服务，Tracker server不存在单点故障。客户端请求Tracker server采用轮询方式，如果请求的tracker无法提供服务则换另一个tracker。</p>
+<h3 id="Storage集群"><a href="#Storage集群" class="headerlink" title="Storage集群"></a>Storage集群</h3><p>Storage集群采用了分组存储方式。storage集群由一个或多个组构成，集群存储总容量为集群中所有组的存储容量之和。一个组由一台或多台存储服务器组成，组内的Storage server之间是平等关系，不同组的Storage server之间不会相互通信，同组内的Storage server之间会相互连接进行文件同步，从而保证同组内每个storage上的文件完全一致的。一个组的存储容量为该组内存储服务器容量最小的那个，由此可见组内存储服务器的软硬件配置最好是一致的。<br>采用分组存储方式的好处是灵活、可控性较强。比如上传文件时，可以由客户端直接指定上传到的组也可以由tracker进行调度选择。一个分组的存储服务器访问压力较大时，可以在该组增加存储服务器来扩充服务能力（纵向扩容）。当系统容量不足时，可以增加组来扩充存储容量（横向扩容）。</p>
+<h3 id="Storage状态收集"><a href="#Storage状态收集" class="headerlink" title="Storage状态收集"></a>Storage状态收集</h3><p>Storage server会连接集群中所有的Tracker server，定时向他们报告自己的状态，包括磁盘剩余空间、文件同步状况、文件上传下载次数等统计信息。</p>
+<h3 id="文件上传流程"><a href="#文件上传流程" class="headerlink" title="文件上传流程"></a>文件上传流程</h3><p><img src="/2018/02/22/搭建图片服务器/文件上传1.jpg" alt="logo"></p>
+<p>客户端上传文件后存储服务器将文件ID返回给客户端，此文件ID用于以后访问该文件的索引信息。文件索引信息包括：组名，虚拟磁盘路径，数据两级目录，文件名。</p>
+<p><img src="/2018/02/22/搭建图片服务器/文件上传2.jpg" alt="logo"></p>
 <ul>
-<li>remoting: 远程通讯基础，提供对多种NIO框架抽象封装，包括“同步转异步”和“请求-响应”模式的信息交换方式。</li>
-<li>Cluster: 服务框架核心，提供基于接口方法的远程过程调用，包括多协议支持，并提供软负载均衡和容错机制的集群支持。</li>
-<li>registry: 服务注册中心，使服务消费方能动态的查找服务提供方，使地址透明，使服务提供方可以平滑增加或减少机器。</li>
+<li>组名：文件上传后所在的storage组名称，在文件上传成功后有storage服务器返回，需要客户端自行保存。 </li>
+<li>虚拟磁盘路径：storage配置的虚拟路径，与磁盘选项store_path* 对应。如果配置了store_path0则是M00，如果配置了store_path1则是M01，以此类推。</li>
+<li>数据两级目录：storage服务器在每个虚拟磁盘路径下创建的两级目录，用于存储数据文件。</li>
+<li>文件名：与文件上传时不同。是由存储服务器根据特定信息生成，文件名包含：源存储服务器IP地址、文件创建时间戳、文件大小、随机数和文件拓展名等信息。</li>
 </ul>
-<p>由于Dubbo团队的文档和代码都非常优秀，所以更多关于dubbo的方方面面请参考<a href="http://code.alibabatech.com/wiki/display/dubbo/Home-zh" target="_blank" rel="noopener">网站</a>。</p>
-<h2 id="安装注册中心"><a href="#安装注册中心" class="headerlink" title="安装注册中心"></a>安装注册中心</h2><p>注册中心负责服务地址的注册与查找，相当于目录服务，服务提供者和消费者只在启动时与注册中心交互，注册中心不转发请求，压力较小。使用dubbo-2.3.3以上版本，建议使用zookeeper注册中心。<br>Zookeeper是Apacahe Hadoop的子项目，是一个树型的目录服务，支持变更推送，适合作为Dubbo服务的注册中心，工业强度较高，可用于生产环境，并推荐使用。</p>
-<p><img src="/2018/02/21/Dubbo学习笔记/dubbo.jpg" alt="logo"></p>
-<p>安装环境为CentOS 7，安装步骤：</p>
+<h3 id="文件下载流程"><a href="#文件下载流程" class="headerlink" title="文件下载流程"></a>文件下载流程</h3><p><img src="/2018/02/22/搭建图片服务器/文件下载1.jpg" alt="logo"></p>
+<p>tracker根据请求的文件路径即文件ID 来快速定义文件。<br>比如请求下边的文件：</p>
+<p><img src="/2018/02/22/搭建图片服务器/文件下载2.jpg" alt="logo"></p>
 <ul>
-<li>安装jdk</li>
-<li>解压缩zookeeper压缩包</li>
-<li>将conf文件夹下zoo_sample.cfg复制一份，改名为zoo.cfg</li>
-<li>修改配置dataDir属性，指定一个真实目录</li>
-<li><p>启动zookeeper：</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">bin/zkServer.sh start</span><br></pre></td></tr></table></figure>
+<li>通过组名tracker能够很快的定位到客户端需要访问的存储服务器组是group1，并选择合适的存储服务器提供客户端访问。</li>
+<li>存储服务器根据“文件存储虚拟磁盘路径”和“数据文件两级目录”可以很快定位到文件所在目录，并根据文件名找到客户端需要访问的文件。</li>
+</ul>
+<h2 id="FastDFS-Nginx实现文件服务器"><a href="#FastDFS-Nginx实现文件服务器" class="headerlink" title="FastDFS+Nginx实现文件服务器"></a>FastDFS+Nginx实现文件服务器</h2><h3 id="架构图"><a href="#架构图" class="headerlink" title="架构图"></a>架构图</h3><p><img src="/2018/02/22/搭建图片服务器/FastDFS架构.jpg" alt="logo"></p>
+<h3 id="确定安装版本"><a href="#确定安装版本" class="headerlink" title="确定安装版本"></a>确定安装版本</h3><p><a href="https://github.com/happyfish100/fastdfs/releases/tag/V5.05" target="_blank" rel="noopener">fastdfs-5.05.tar.gz</a><br><a href="https://github.com/happyfish100/fastdfs-nginx-module" target="_blank" rel="noopener">fastdfs-nginx-module_v1.16.tar.gz</a><br><a href="https://github.com/happyfish100/libfastcommon/releases/tag/V1.0.7" target="_blank" rel="noopener">libfastcommon-1.0.7.zip</a><br><a href="http://nginx.org/en/download.html" target="_blank" rel="noopener">nginx-1.7.8.tar.gz</a><br><a href="http://labs.frickle.com/files/ngx_cache_purge-2.1.tar.gz" target="_blank" rel="noopener">ngx-cache_purge-2.1.tar.gz</a><br><a href="http://www.cpan.org/src/5.0/perl-5.20.2.tar.gz" target="_blank" rel="noopener">perl-5.20.2.tar.gz</a></p>
+<h3 id="安装虚拟机环境"><a href="#安装虚拟机环境" class="headerlink" title="安装虚拟机环境"></a>安装虚拟机环境</h3><p>这里使用的是CentOS 7，如果没有搭建过虚拟机，请参考其他教程。</p>
+<h3 id="安装libfastcommon-1-0-7-zip"><a href="#安装libfastcommon-1-0-7-zip" class="headerlink" title="安装libfastcommon-1.0.7.zip"></a>安装libfastcommon-1.0.7.zip</h3><p>在安装libfastcommon时，如果没有安装unzip、zip、perl、gcc等，逐一安装即可。</p>
+<ul>
+<li>利用unzip解压缩，如果没有提示安装，则按照下图的命令安装即可：</li>
+</ul>
+<p><img src="/2018/02/22/搭建图片服务器/zip.jpg" alt="logo"></p>
+<ul>
+<li>解压完成后，进入文件夹，使用<code>./make.sh</code>命令，如果没有安装gcc和perl会报错：</li>
+</ul>
+<p><img src="/2018/02/22/搭建图片服务器/gcc.jpg" alt="logo"></p>
+<ul>
+<li>安装gcc</li>
+</ul>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">yum -y install gcc</span><br><span class="line">yum -y install gcc-c++</span><br></pre></td></tr></table></figure>
+<ul>
+<li>安装perl，可以使用wget安装：<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">wget http://www.cpan.org/src/5.0/perl-5.20.2.tar.gz</span><br><span class="line">tar zxf perl-5.20.2.tar.gz</span><br><span class="line">mkdir /usr/<span class="built_in">local</span>/perl</span><br><span class="line">./Configure -des -Dprefix=/usr/<span class="built_in">local</span>/perl -Dusethreads -Uversiononly</span><br><span class="line">make</span><br><span class="line">make install</span><br><span class="line">perl -version</span><br></pre></td></tr></table></figure>
 </li>
-<li><p>关闭zookeeper：</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">bin/zkServer.sh stop</span><br></pre></td></tr></table></figure>
-</li>
-<li><p>查看zookeeper状态：</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">bin/zkServer.sh status</span><br></pre></td></tr></table></figure>
-</li>
 </ul>
-<p>注意要关闭Linux防火墙。</p>
-<h2 id="添加Jar包"><a href="#添加Jar包" class="headerlink" title="添加Jar包"></a>添加Jar包</h2><p>使用maven管理工程，在pom中添加：<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">&lt;!-- dubbo相关 --&gt;</span><br><span class="line">&lt;dependency&gt;</span><br><span class="line">	&lt;groupId&gt;com.alibaba&lt;/groupId&gt;</span><br><span class="line">	&lt;artifactId&gt;dubbo&lt;/artifactId&gt;</span><br><span class="line">	&lt;exclusions&gt;</span><br><span class="line">		&lt;exclusion&gt;</span><br><span class="line">			&lt;groupId&gt;org.springframework&lt;/groupId&gt;</span><br><span class="line">			&lt;artifactId&gt;spring&lt;/artifactId&gt;</span><br><span class="line">		&lt;/exclusion&gt;</span><br><span class="line">		&lt;exclusion&gt;</span><br><span class="line">			&lt;groupId&gt;org.jboss.netty&lt;/groupId&gt;</span><br><span class="line">			&lt;artifactId&gt;netty&lt;/artifactId&gt;</span><br><span class="line">		&lt;/exclusion&gt;</span><br><span class="line">	&lt;/exclusions&gt;</span><br><span class="line">&lt;/dependency&gt;</span><br></pre></td></tr></table></figure></p>
-<h2 id="发布dubbo服务"><a href="#发布dubbo服务" class="headerlink" title="发布dubbo服务"></a>发布dubbo服务</h2><p>在spring的配置文件中添加dubbo的约束，然后使用dubbo:service发布服务。</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line">&lt;?xml version=<span class="string">"1.0"</span> encoding=<span class="string">"UTF-8"</span>?&gt;</span><br><span class="line">&lt;beans xmlns=<span class="string">"http://www.springframework.org/schema/beans"</span></span><br><span class="line">	xmlns:context=<span class="string">"http://www.springframework.org/schema/context"</span> xmlns:p=<span class="string">"http://www.springframework.org/schema/p"</span></span><br><span class="line">	xmlns:aop=<span class="string">"http://www.springframework.org/schema/aop"</span> xmlns:tx=<span class="string">"http://www.springframework.org/schema/tx"</span></span><br><span class="line">	xmlns:dubbo=<span class="string">"http://code.alibabatech.com/schema/dubbo"</span> xmlns:xsi=<span class="string">"http://www.w3.org/2001/XMLSchema-instance"</span></span><br><span class="line">	xsi:schemaLocation=<span class="string">"http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-4.2.xsd</span></span><br><span class="line"><span class="string">	http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-4.2.xsd</span></span><br><span class="line"><span class="string">	http://www.springframework.org/schema/aop http://www.springframework.org/schema/aop/spring-aop-4.2.xsd http://www.springframework.org/schema/tx http://www.springframework.org/schema/tx/spring-tx-4.2.xsd</span></span><br><span class="line"><span class="string">	http://code.alibabatech.com/schema/dubbo http://code.alibabatech.com/schema/dubbo/dubbo.xsd</span></span><br><span class="line"><span class="string">	http://www.springframework.org/schema/util http://www.springframework.org/schema/util/spring-util-4.2.xsd"</span>&gt;</span><br><span class="line"></span><br><span class="line">	&lt;context:component-scan base-package=<span class="string">"com.[项目名].service"</span>&gt;&lt;/context:component-scan&gt;</span><br><span class="line"></span><br><span class="line">	&lt;!-- 使用dubbo发布服务 --&gt;</span><br><span class="line">	&lt;!-- 提供方应用信息，用于计算依赖关系 --&gt;</span><br><span class="line">	&lt;dubbo:application name=<span class="string">"[项目名]-manager"</span> /&gt;</span><br><span class="line">	&lt;dubbo:registry protocol=<span class="string">"zookeeper"</span></span><br><span class="line">		address=<span class="string">"192.168.25.154:2181,192.168.25.154:2182,192.168.25.154:2183"</span> /&gt;</span><br><span class="line">	&lt;!-- 用dubbo协议在20880端口暴露服务 --&gt;</span><br><span class="line">	&lt;dubbo:protocol name=<span class="string">"dubbo"</span> port=<span class="string">"20880"</span> /&gt;</span><br><span class="line">	&lt;!-- 声明需要暴露的服务接口 --&gt;</span><br><span class="line">	&lt;dubbo:service interface=<span class="string">"com.[项目名].service.ItemService"</span> ref=<span class="string">"itemServiceImpl"</span> /&gt;</span><br><span class="line"></span><br><span class="line">&lt;/beans&gt;</span><br></pre></td></tr></table></figure>
-<h2 id="引用服务"><a href="#引用服务" class="headerlink" title="引用服务"></a>引用服务</h2><p>在springMVC的配置文件中添加服务的引用</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><span class="line">&lt;?xml version=<span class="string">"1.0"</span> encoding=<span class="string">"UTF-8"</span>?&gt;</span><br><span class="line">&lt;beans xmlns=<span class="string">"http://www.springframework.org/schema/beans"</span></span><br><span class="line">	xmlns:xsi=<span class="string">"http://www.w3.org/2001/XMLSchema-instance"</span> xmlns:p=<span class="string">"http://www.springframework.org/schema/p"</span></span><br><span class="line">	xmlns:context=<span class="string">"http://www.springframework.org/schema/context"</span></span><br><span class="line">	xmlns:dubbo=<span class="string">"http://code.alibabatech.com/schema/dubbo"</span> </span><br><span class="line">	xmlns:mvc=<span class="string">"http://www.springframework.org/schema/mvc"</span></span><br><span class="line">	xsi:schemaLocation=<span class="string">"http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-4.2.xsd</span></span><br><span class="line"><span class="string">        http://www.springframework.org/schema/mvc http://www.springframework.org/schema/mvc/spring-mvc-4.2.xsd</span></span><br><span class="line"><span class="string">        http://code.alibabatech.com/schema/dubbo http://code.alibabatech.com/schema/dubbo/dubbo.xsd</span></span><br><span class="line"><span class="string">        http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-4.2.xsd"</span>&gt;</span><br><span class="line"></span><br><span class="line">	&lt;context:component-scan base-package=<span class="string">"com.[项目名].controller"</span> /&gt;</span><br><span class="line">	&lt;mvc:annotation-driven /&gt;</span><br><span class="line">	&lt;bean</span><br><span class="line">		class=<span class="string">"org.springframework.web.servlet.view.InternalResourceViewResolver"</span>&gt;</span><br><span class="line">		&lt;property name=<span class="string">"prefix"</span> value=<span class="string">"/WEB-INF/jsp/"</span> /&gt;</span><br><span class="line">		&lt;property name=<span class="string">"suffix"</span> value=<span class="string">".jsp"</span> /&gt;</span><br><span class="line">	&lt;/bean&gt;</span><br><span class="line">	</span><br><span class="line">	&lt;!-- 引用dubbo服务 --&gt;</span><br><span class="line">	&lt;dubbo:application name=<span class="string">"[项目名]-manager-web"</span>/&gt;</span><br><span class="line">	&lt;dubbo:registry protocol=<span class="string">"zookeeper"</span> address=<span class="string">"192.168.25.154:2181,192.168.25.154:2182,192.168.25.154:2183"</span>/&gt;	</span><br><span class="line">	&lt;dubbo:reference interface=<span class="string">"com.[项目名].service.ItemService"</span> id=<span class="string">"itemService"</span> /&gt;</span><br><span class="line">	</span><br><span class="line">&lt;/beans&gt;</span><br></pre></td></tr></table></figure>
-<h2 id="Dubbo监控中心"><a href="#Dubbo监控中心" class="headerlink" title="Dubbo监控中心"></a>Dubbo监控中心</h2><p>需要安装tomcat，然后部署监控中心即可。</p>
+<p>安装完成后，重新依次执行</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">yum -y install gcc</span><br><span class="line">yum -y install gcc-c++</span><br></pre></td></tr></table></figure>
+<p>完成libfastcommon的安装。</p>
+<p><img src="/2018/02/22/搭建图片服务器/gcc.jpg" alt="logo"></p>
+<p>注意，上述安装路径在/usr/lib64，但是FasrDFS主程序设置的lib目录是/usr/local/lib,所以需要建立软连接：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">ln -s /usr/lib64/libfastcommon.so /usr/<span class="built_in">local</span>/lib/libfastcommon.so</span><br><span class="line">ln -s /usr/lib64/libfastcommon.so /usr/lib/libfastcommon.so</span><br><span class="line">ln -s /usr/lib64/libfdfsclient.so /usr/<span class="built_in">local</span>/lib/libfdfsclient.so</span><br><span class="line">ln -s /usr/lib64/libfdfsclient.so /usr/lib/libfdfsclient.so</span><br></pre></td></tr></table></figure>
+<h3 id="安装fastdfs-5-05-tar-gz"><a href="#安装fastdfs-5-05-tar-gz" class="headerlink" title="安装fastdfs-5.05.tar.gz"></a>安装fastdfs-5.05.tar.gz</h3><p>前几步安装成功后，开始安装fastdfs，先解压文件，在编译和安装即可，整个过程没有报错，并且打开/etc/fdfs这个目录发现配置文件存在，就说明安装成功了。</p>
+<p><img src="/2018/02/22/搭建图片服务器/fdfs.jpg" alt="logo"></p>
+<h3 id="配置tracker："><a href="#配置tracker：" class="headerlink" title="配置tracker："></a>配置tracker：</h3><ul>
+<li>进入/etc/fdfs文件夹，执行<code>cp tracker.conf.sample tracker.conf</code>。</li>
+<li>编辑tracker.conf，执行命令<code>vi tracker.conf</code>，修改如下参数：</li>
+</ul>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">disabl ed=<span class="literal">false</span> <span class="comment">#启动配置文件</span></span><br><span class="line">port=22122 <span class="comment">#设置tracker的端口号，默认22122</span></span><br><span class="line">base_path=/opt/fastdfs_tracker <span class="comment">#设置tracker的数据文件和日志目录（预先创建）</span></span><br></pre></td></tr></table></figure>
 <ul>
-<li>部署监控中心：</li>
+<li><p>启动tracker，执行命令：<code>/usr/bin/fdfs_trackerd /etc/fdfs/tracker.conf restart</code></p>
+</li>
+<li><p>启动完毕后，可以通过以下两个方法查看tracker是否启动成功：<br><code>netstat -unltp|grep fdfs</code>，查看22122端口监听情况。<br><code>tail -100f /opt/fastdfs_tracker/logs/trackerd.log</code>查看tracker启动日志</p>
+</li>
+<li><p>启动没有问题，则可以将tracker添加到开机启动项：</p>
+</li>
 </ul>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">[root@localhost ~]<span class="comment"># cp dubbo-admin-2.5.4.war apache-tomcat-7.0.47/webapps/dubbo-admin.war</span></span><br></pre></td></tr></table></figure>
+<p>打开文件 <code>vi /etc/rc.d/rc.local</code><br>添加如下命令到文件中 <code>/usr/bin/fdfs_trackerd /etc/fdfs/tracker.conf restart</code></p>
+<h3 id="配置storage"><a href="#配置storage" class="headerlink" title="配置storage"></a>配置storage</h3><p>storage的配置文件与tracker类似，以192.168.50.21为例</p>
 <ul>
-<li>启动tomcat</li>
-<li>访问 tomcat的ip端口下的/dubbo-admin/ ，用户名和密码均为：root</li>
+<li>进入/etc/fdfs文件夹，执行：<code>cp storage.conf.sample storage.conf</code>。</li>
+<li>编辑storage.conf，执行：<code>vi storage.conf</code>，修改如下选项：</li>
 </ul>
-<p>如果监控中心和注册中心在同一台服务器上，可以不需要任何配置。<br>如果不在同一台服务器，需要修改配置文件：<br>/root/apache-tomcat-7.0.47/webapps/dubbo-admin/WEB-INF/dubbo.properties<br>如下图：<br><img src="/2018/02/21/Dubbo学习笔记/dubboproperties.png" alt="logo"></p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">a. disabled=<span class="literal">false</span> <span class="comment">#启动配置文件</span></span><br><span class="line">b. group_name=group1 <span class="comment">#组名</span></span><br><span class="line">c. port=23000 <span class="comment">#storage端口号，默认为23000，同一组的端口号要一致</span></span><br><span class="line">d. base_path=/opt/fastdfs_storage_info <span class="comment">#设置storage的日志目录（需要预先创建）</span></span><br><span class="line">e. store_path_count=1 <span class="comment">#存储路径个数，需要和store_path个数匹配</span></span><br><span class="line">f. store_path0=/opt/fastdfs_storage_data <span class="comment">#存储路径</span></span><br><span class="line">g. tracker_server=192.168.50.21:22122 <span class="comment">#tracker服务器ip地址和端口号</span></span><br><span class="line">`</span><br></pre></td></tr></table></figure>
+<ul>
+<li><p>启动storage，执行命令：<code>/usr/bin/fdfs_storage /etc/fdfs/storage.conf restart</code></p>
+</li>
+<li><p>启动完毕后，可以通过以下两个方法查看tracker是否启动成功：<br><code>netstat -unltp|grep fdfs</code>，查看23000端口监听情况。<br><code>tail -100f /opt/fastdfs_storage_info/logs/storage.log</code>查看storage启动日志</p>
+</li>
+<li><p>启动完成后，可以通过fdfs_monitor查看集群情况，查看storage是否注册到tracker服务器中：<code>/usr/bin/fdfs_monitor /etc/fdfs/storage.conf</code>，查看192.168.50.21是ACTIVE状态即可</p>
+</li>
+<li><p>启动没有问题，则可以将tracker添加到开机启动项：<br>打开文件 <code>vi /etc/rc.d/rc.local</code><br>添加如下命令到文件中 <code>/usr/bin/fdfs_trackerd /etc/fdfs/tracker.conf restart</code></p>
+</li>
+</ul>
+<h3 id="安装nginx环境"><a href="#安装nginx环境" class="headerlink" title="安装nginx环境"></a>安装nginx环境</h3><p>以上配置已经完成fastdfs配置，如果用java等api客户端就可以完成文件的上传、同步和下载。但是如果要实现基于http协议的下载功能，就需要安装nginx。</p>
+<p>无论是在tracker还是storage中安装nginx，都需要安装一些基础软件，请在安装nginx之前确认是否安装以下软件：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">1. yum install -y gcc </span><br><span class="line">2. yum install -y gcc-c++</span><br><span class="line">3. yum install -y pcre pcre-devel</span><br><span class="line">4. yum install -y zlib zli b-devel</span><br><span class="line">5. yum install -y openssl openssl-devel</span><br></pre></td></tr></table></figure>
+<h3 id="在storage中安装nginx"><a href="#在storage中安装nginx" class="headerlink" title="在storage中安装nginx"></a>在storage中安装nginx</h3><ul>
+<li>创建nginx默认安装的文件夹:mkdir /usr/local/nginx</li>
+<li><p>解压缩fastdfs-nginx-module_v1.16.tar.gz，进入fastdfs-nginx-module/src目录，编辑config文件，找到CORE_INCS这一行，将路径中的local全部去掉，更改为：<br><code>CORE_INCS=&quot;$CORE_INCS/usr/include/fastdfs /usr/include/fastcommon/&quot;</code></p>
+</li>
+<li><p>进入nginx1.7.8文件夹，执行如下命令：<br><code>./configure --prefix=/usr/local/nginx --add-module=/myself_settings/fastdfs-nginxmodule/fastdfs-nginx-module/src</code></p>
+</li>
+<li><p>开始编译<code>make</code>和安装<code>make install</code>这两个命令，没有报错就是安好了。</p>
+</li>
+<li>执行命令<code>cd /usr/local/nginx/conf</code>，编辑nginx.conf，编辑如下：</li>
+</ul>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">li sten 8080;</span><br><span class="line"><span class="comment">##在server段中添加:</span></span><br><span class="line">locati on ~/group[1-3]/M00&#123;</span><br><span class="line">root/fdfs/storage/data;</span><br><span class="line">ngx_fastdfs_module;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>选择好group分组，如果配置的storage是在group2组，则location应该是<code>/group2/M00</code>。</p>
+<ul>
+<li>执行命令 <code>cd /myself_settings/fastdfs5.0.5/fastdfs-5.05/conf</code> ，将目录中的http.conf和mime.types拷贝到/etc/fdfs/下。</li>
+<li>执行命令 <code>cd /myself_settings/fastdfs_nginx_module/fastdfs-nginx-module/src</code> ，将目录下面的mod_fastdfs.conf拷贝到/etc/fdfs目录下。</li>
+<li>打开/etc/fdfs这个目录，编辑,od_fastdfs.conf这个文件，如下:</li>
+</ul>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">base_path=/opt/fastdfs_storage_info <span class="comment">#保存日志目录</span></span><br><span class="line">tracker_server=192.168.50.21:22122 <span class="comment">#tracker服务器的ip和端口</span></span><br><span class="line">storage_server_port=23001 <span class="comment">#storage服务器的端口号</span></span><br><span class="line">group_name=group2 <span class="comment">#当前的group名</span></span><br><span class="line">url_have_group_name= <span class="literal">true</span> <span class="comment">#文件url中是否有group名</span></span><br><span class="line">store_path_count=1 <span class="comment">#存储路径个数，需要和store_path个数匹配</span></span><br><span class="line">store_path0=/opt/fastdfs_storage_data <span class="comment">#存储路径</span></span><br><span class="line">http. need_find_content_type=<span class="literal">true</span> <span class="comment">#从文件扩展名查找文件类型（nginx时为true）</span></span><br><span class="line">group_count= 2 <span class="comment">#设置组的个数</span></span><br></pre></td></tr></table></figure>
+<p>在文件末尾追加如图配置：</p>
+<p><img src="/2018/02/22/搭建图片服务器/nginx.jpg" alt="logo"></p>
+<ul>
+<li>建立软连接：<br><code>ln -s /opt/fastdfs_storage_data/data /opt/fastdfs_storage_data/data/M00</code></li>
+<li>执行命令启动 <code>/usr/local/nginx/sbin/nginx</code> ，如果/usr/local/nginx/logs/error.log中无报错，则访问192.168.50.21:8080这个url可以看见ngxin的欢迎页面。</li>
+</ul>
 
       
     </div>
@@ -487,11 +557,11 @@
       
         <div class="post-tags">
           
-            <a href="/tags/dubbo/" rel="tag"># dubbo</a>
+            <a href="/tags/图片服务器/" rel="tag"># 图片服务器</a>
           
-            <a href="/tags/Linux/" rel="tag"># Linux</a>
+            <a href="/tags/FastDFS/" rel="tag"># FastDFS</a>
           
-            <a href="/tags/SOA/" rel="tag"># SOA</a>
+            <a href="/tags/分布式/" rel="tag"># 分布式</a>
           
         </div>
       
@@ -504,8 +574,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2018/02/21/MyBatis逆向工程/" rel="next" title="MyBatis逆向工程">
-                <i class="fa fa-chevron-left"></i> MyBatis逆向工程
+              <a href="/2018/02/21/Dubbo学习笔记/" rel="next" title="Dubbo学习笔记">
+                <i class="fa fa-chevron-left"></i> Dubbo学习笔记
               </a>
             
           </div>
@@ -513,10 +583,6 @@
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
-            
-              <a href="/2018/02/22/搭建图片服务器/" rel="prev" title="搭建图片服务器">
-                搭建图片服务器 <i class="fa fa-chevron-right"></i>
-              </a>
             
           </div>
         </div>
@@ -650,7 +716,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#什么是dubbo"><span class="nav-number">1.</span> <span class="nav-text">什么是dubbo</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#安装注册中心"><span class="nav-number">2.</span> <span class="nav-text">安装注册中心</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#添加Jar包"><span class="nav-number">3.</span> <span class="nav-text">添加Jar包</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#发布dubbo服务"><span class="nav-number">4.</span> <span class="nav-text">发布dubbo服务</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#引用服务"><span class="nav-number">5.</span> <span class="nav-text">引用服务</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Dubbo监控中心"><span class="nav-number">6.</span> <span class="nav-text">Dubbo监控中心</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#FastDFS介绍"><span class="nav-number">1.</span> <span class="nav-text">FastDFS介绍</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#什么是FastDFS"><span class="nav-number">1.1.</span> <span class="nav-text">什么是FastDFS</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#FastDFS架构"><span class="nav-number">1.2.</span> <span class="nav-text">FastDFS架构</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Tracker-集群"><span class="nav-number">1.3.</span> <span class="nav-text">Tracker 集群</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Storage集群"><span class="nav-number">1.4.</span> <span class="nav-text">Storage集群</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Storage状态收集"><span class="nav-number">1.5.</span> <span class="nav-text">Storage状态收集</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#文件上传流程"><span class="nav-number">1.6.</span> <span class="nav-text">文件上传流程</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#文件下载流程"><span class="nav-number">1.7.</span> <span class="nav-text">文件下载流程</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#FastDFS-Nginx实现文件服务器"><span class="nav-number">2.</span> <span class="nav-text">FastDFS+Nginx实现文件服务器</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#架构图"><span class="nav-number">2.1.</span> <span class="nav-text">架构图</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#确定安装版本"><span class="nav-number">2.2.</span> <span class="nav-text">确定安装版本</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#安装虚拟机环境"><span class="nav-number">2.3.</span> <span class="nav-text">安装虚拟机环境</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#安装libfastcommon-1-0-7-zip"><span class="nav-number">2.4.</span> <span class="nav-text">安装libfastcommon-1.0.7.zip</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#安装fastdfs-5-05-tar-gz"><span class="nav-number">2.5.</span> <span class="nav-text">安装fastdfs-5.05.tar.gz</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#配置tracker："><span class="nav-number">2.6.</span> <span class="nav-text">配置tracker：</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#配置storage"><span class="nav-number">2.7.</span> <span class="nav-text">配置storage</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#安装nginx环境"><span class="nav-number">2.8.</span> <span class="nav-text">安装nginx环境</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#在storage中安装nginx"><span class="nav-number">2.9.</span> <span class="nav-text">在storage中安装nginx</span></a></li></ol></li></ol></div>
             
 
           </div>
