@@ -8,8 +8,8 @@
         <category>电脑技术</category>
       </categories>
       <tags>
-        <tag>solr</tag>
         <tag>分布式</tag>
+        <tag>solr</tag>
         <tag>集群</tag>
       </tags>
   </entry>
@@ -21,9 +21,9 @@
         <category>电脑技术</category>
       </categories>
       <tags>
-        <tag>分布式</tag>
         <tag>图片服务器</tag>
         <tag>FastDFS</tag>
+        <tag>分布式</tag>
       </tags>
   </entry>
   <entry>
