@@ -78,7 +78,7 @@
 <link href="/css/main.css?v=5.1.2" rel="stylesheet" type="text/css" />
 
 
-  <meta name="keywords" content="图片服务器,FastDFS,分布式," />
+  <meta name="keywords" content="分布式,图片服务器,FastDFS," />
 
 
 
@@ -94,13 +94,13 @@
 
 
 
-<meta name="description" content="项目中需要搭建一个图片服务器，专门用于保存图片，在线寻找成熟的技术，于是乎发现了FastDFS，网上关于FastDFS的学习资料很多，在此整理一下，复习一遍，方便以后再次使用。 FastDFS介绍FastDFS开源地址：https://github.com/happyfish100 什么是FastDFSFastDFS是用c语言编写的一款开源的分布式文件系统。FastDFS为互联网量身定制，充分考虑">
-<meta name="keywords" content="图片服务器,FastDFS,分布式">
+<meta name="description" content="项目中需要搭建一个图片服务器，专门用于保存图片，在线寻找成熟的技术，于是乎发现了FastDFS，网上关于FastDFS的学习资料很多，在此整理一下，复习一遍，方便以后再次使用。 FastDFS介绍FastDFS开源地址： https://github.com/happyfish100 什么是FastDFSFastDFS是用c语言编写的一款开源的分布式文件系统。FastDFS为互联网量身定制，充分考">
+<meta name="keywords" content="分布式,图片服务器,FastDFS">
 <meta property="og:type" content="article">
 <meta property="og:title" content="搭建图片服务器">
 <meta property="og:url" content="https://a121bc.github.io/2018/02/22/搭建图片服务器/index.html">
 <meta property="og:site_name" content="A121BC&#39;s Notes">
-<meta property="og:description" content="项目中需要搭建一个图片服务器，专门用于保存图片，在线寻找成熟的技术，于是乎发现了FastDFS，网上关于FastDFS的学习资料很多，在此整理一下，复习一遍，方便以后再次使用。 FastDFS介绍FastDFS开源地址：https://github.com/happyfish100 什么是FastDFSFastDFS是用c语言编写的一款开源的分布式文件系统。FastDFS为互联网量身定制，充分考虑">
+<meta property="og:description" content="项目中需要搭建一个图片服务器，专门用于保存图片，在线寻找成熟的技术，于是乎发现了FastDFS，网上关于FastDFS的学习资料很多，在此整理一下，复习一遍，方便以后再次使用。 FastDFS介绍FastDFS开源地址： https://github.com/happyfish100 什么是FastDFSFastDFS是用c语言编写的一款开源的分布式文件系统。FastDFS为互联网量身定制，充分考">
 <meta property="og:locale" content="zh-Hans">
 <meta property="og:image" content="https://a121bc.github.io/2018/02/22/搭建图片服务器/FastDFS.jpg">
 <meta property="og:image" content="https://a121bc.github.io/2018/02/22/搭建图片服务器/文件上传1.jpg">
@@ -113,10 +113,10 @@
 <meta property="og:image" content="https://a121bc.github.io/2018/02/22/搭建图片服务器/gcc.jpg">
 <meta property="og:image" content="https://a121bc.github.io/2018/02/22/搭建图片服务器/fdfs.jpg">
 <meta property="og:image" content="https://a121bc.github.io/2018/02/22/搭建图片服务器/nginx.jpg">
-<meta property="og:updated_time" content="2018-02-22T11:40:45.755Z">
+<meta property="og:updated_time" content="2018-02-23T03:12:34.616Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="搭建图片服务器">
-<meta name="twitter:description" content="项目中需要搭建一个图片服务器，专门用于保存图片，在线寻找成熟的技术，于是乎发现了FastDFS，网上关于FastDFS的学习资料很多，在此整理一下，复习一遍，方便以后再次使用。 FastDFS介绍FastDFS开源地址：https://github.com/happyfish100 什么是FastDFSFastDFS是用c语言编写的一款开源的分布式文件系统。FastDFS为互联网量身定制，充分考虑">
+<meta name="twitter:description" content="项目中需要搭建一个图片服务器，专门用于保存图片，在线寻找成熟的技术，于是乎发现了FastDFS，网上关于FastDFS的学习资料很多，在此整理一下，复习一遍，方便以后再次使用。 FastDFS介绍FastDFS开源地址： https://github.com/happyfish100 什么是FastDFSFastDFS是用c语言编写的一款开源的分布式文件系统。FastDFS为互联网量身定制，充分考">
 <meta name="twitter:image" content="https://a121bc.github.io/2018/02/22/搭建图片服务器/FastDFS.jpg">
 
 
@@ -430,7 +430,7 @@
 
       
         <p>项目中需要搭建一个图片服务器，专门用于保存图片，在线寻找成熟的技术，于是乎发现了FastDFS，网上关于FastDFS的学习资料很多，在此整理一下，复习一遍，方便以后再次使用。</p>
-<h2 id="FastDFS介绍"><a href="#FastDFS介绍" class="headerlink" title="FastDFS介绍"></a>FastDFS介绍</h2><p>FastDFS开源地址：<a href="https://github.com/happyfish100" target="_blank" rel="noopener">https://github.com/happyfish100</a></p>
+<h2 id="FastDFS介绍"><a href="#FastDFS介绍" class="headerlink" title="FastDFS介绍"></a>FastDFS介绍</h2><p>FastDFS开源地址： <a href="https://github.com/happyfish100" target="_blank" rel="noopener">https://github.com/happyfish100</a></p>
 <h3 id="什么是FastDFS"><a href="#什么是FastDFS" class="headerlink" title="什么是FastDFS"></a>什么是FastDFS</h3><p>FastDFS是用c语言编写的一款开源的分布式文件系统。FastDFS为互联网量身定制，充分考虑了冗余备份、负载均衡、线性扩容等机制，并注重高可用、高性能等指标，使用FastDFS很容易搭建一套高性能的文件服务器集群提供文件上传、下载等服务。</p>
 <a id="more"></a>
 <h3 id="FastDFS架构"><a href="#FastDFS架构" class="headerlink" title="FastDFS架构"></a>FastDFS架构</h3><p>FastDFS架构包括 Tracker server和Storage server。客户端请求Tracker server进行文件上传、下载，通过Tracker server调度最终由Storage server完成文件上传和下载。<br>Tracker server作用是负载均衡和调度，通过Tracker server在文件上传时可以根据一些策略找到Storage server提供文件上传服务。可以将tracker称为追踪服务器或调度服务器。<br>Storage server作用是文件存储，客户端上传的文件最终存储在Storage服务器上，Storage server没有实现自己的文件系统而是利用操作系统的文件系统来管理文件。可以将storage称为存储服务器。<br>如下图：</p>
@@ -472,9 +472,9 @@
 </ul>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">yum -y install gcc</span><br><span class="line">yum -y install gcc-c++</span><br></pre></td></tr></table></figure>
 <ul>
-<li>安装perl，可以使用wget安装：<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">wget http://www.cpan.org/src/5.0/perl-5.20.2.tar.gz</span><br><span class="line">tar zxf perl-5.20.2.tar.gz</span><br><span class="line">mkdir /usr/<span class="built_in">local</span>/perl</span><br><span class="line">./Configure -des -Dprefix=/usr/<span class="built_in">local</span>/perl -Dusethreads -Uversiononly</span><br><span class="line">make</span><br><span class="line">make install</span><br><span class="line">perl -version</span><br></pre></td></tr></table></figure>
-</li>
+<li>安装perl，可以使用wget安装：</li>
 </ul>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">wget http://www.cpan.org/src/5.0/perl-5.20.2.tar.gz</span><br><span class="line">tar zxf perl-5.20.2.tar.gz</span><br><span class="line">mkdir /usr/<span class="built_in">local</span>/perl</span><br><span class="line">./Configure -des -Dprefix=/usr/<span class="built_in">local</span>/perl -Dusethreads -Uversiononly</span><br><span class="line">make</span><br><span class="line">make install</span><br><span class="line">perl -version</span><br></pre></td></tr></table></figure>
 <p>安装完成后，重新依次执行</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">yum -y install gcc</span><br><span class="line">yum -y install gcc-c++</span><br></pre></td></tr></table></figure>
 <p>完成libfastcommon的安装。</p>
@@ -489,7 +489,7 @@
 </ul>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">disabl ed=<span class="literal">false</span> <span class="comment">#启动配置文件</span></span><br><span class="line">port=22122 <span class="comment">#设置tracker的端口号，默认22122</span></span><br><span class="line">base_path=/opt/fastdfs_tracker <span class="comment">#设置tracker的数据文件和日志目录（预先创建）</span></span><br></pre></td></tr></table></figure>
 <ul>
-<li><p>启动tracker，执行命令：<code>/usr/bin/fdfs_trackerd /etc/fdfs/tracker.conf restart</code></p>
+<li><p>启动tracker，执行命令： <code>/usr/bin/fdfs_trackerd /etc/fdfs/tracker.conf restart</code></p>
 </li>
 <li><p>启动完毕后，可以通过以下两个方法查看tracker是否启动成功：<br><code>netstat -unltp|grep fdfs</code>，查看22122端口监听情况。<br><code>tail -100f /opt/fastdfs_tracker/logs/trackerd.log</code>查看tracker启动日志</p>
 </li>
@@ -499,16 +499,16 @@
 <p>打开文件 <code>vi /etc/rc.d/rc.local</code><br>添加如下命令到文件中 <code>/usr/bin/fdfs_trackerd /etc/fdfs/tracker.conf restart</code></p>
 <h3 id="配置storage"><a href="#配置storage" class="headerlink" title="配置storage"></a>配置storage</h3><p>storage的配置文件与tracker类似，以192.168.50.21为例</p>
 <ul>
-<li>进入/etc/fdfs文件夹，执行：<code>cp storage.conf.sample storage.conf</code>。</li>
-<li>编辑storage.conf，执行：<code>vi storage.conf</code>，修改如下选项：</li>
+<li>进入/etc/fdfs文件夹，执行： <code>cp storage.conf.sample storage.conf</code>。</li>
+<li>编辑storage.conf，执行： <code>vi storage.conf</code>，修改如下选项：</li>
 </ul>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">a. disabled=<span class="literal">false</span> <span class="comment">#启动配置文件</span></span><br><span class="line">b. group_name=group1 <span class="comment">#组名</span></span><br><span class="line">c. port=23000 <span class="comment">#storage端口号，默认为23000，同一组的端口号要一致</span></span><br><span class="line">d. base_path=/opt/fastdfs_storage_info <span class="comment">#设置storage的日志目录（需要预先创建）</span></span><br><span class="line">e. store_path_count=1 <span class="comment">#存储路径个数，需要和store_path个数匹配</span></span><br><span class="line">f. store_path0=/opt/fastdfs_storage_data <span class="comment">#存储路径</span></span><br><span class="line">g. tracker_server=192.168.50.21:22122 <span class="comment">#tracker服务器ip地址和端口号</span></span><br><span class="line">`</span><br></pre></td></tr></table></figure>
 <ul>
-<li><p>启动storage，执行命令：<code>/usr/bin/fdfs_storage /etc/fdfs/storage.conf restart</code></p>
+<li><p>启动storage，执行命令： <code>/usr/bin/fdfs_storage /etc/fdfs/storage.conf restart</code></p>
 </li>
 <li><p>启动完毕后，可以通过以下两个方法查看tracker是否启动成功：<br><code>netstat -unltp|grep fdfs</code>，查看23000端口监听情况。<br><code>tail -100f /opt/fastdfs_storage_info/logs/storage.log</code>查看storage启动日志</p>
 </li>
-<li><p>启动完成后，可以通过fdfs_monitor查看集群情况，查看storage是否注册到tracker服务器中：<code>/usr/bin/fdfs_monitor /etc/fdfs/storage.conf</code>，查看192.168.50.21是ACTIVE状态即可</p>
+<li><p>启动完成后，可以通过fdfs_monitor查看集群情况，查看storage是否注册到tracker服务器中： <code>/usr/bin/fdfs_monitor /etc/fdfs/storage.conf</code>，查看192.168.50.21是ACTIVE状态即可</p>
 </li>
 <li><p>启动没有问题，则可以将tracker添加到开机启动项：<br>打开文件 <code>vi /etc/rc.d/rc.local</code><br>添加如下命令到文件中 <code>/usr/bin/fdfs_trackerd /etc/fdfs/tracker.conf restart</code></p>
 </li>
@@ -557,11 +557,11 @@
       
         <div class="post-tags">
           
+            <a href="/tags/分布式/" rel="tag"># 分布式</a>
+          
             <a href="/tags/图片服务器/" rel="tag"># 图片服务器</a>
           
             <a href="/tags/FastDFS/" rel="tag"># FastDFS</a>
-          
-            <a href="/tags/分布式/" rel="tag"># 分布式</a>
           
         </div>
       
@@ -583,6 +583,10 @@
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2018/02/23/SolrCloud集群搭建/" rel="prev" title="SolrCloud集群搭建">
+                SolrCloud集群搭建 <i class="fa fa-chevron-right"></i>
+              </a>
             
           </div>
         </div>
@@ -659,7 +663,7 @@
           
             <div class="site-state-item site-state-posts">
               <a href="/archives/">
-                <span class="site-state-item-count">4</span>
+                <span class="site-state-item-count">5</span>
                 <span class="site-state-item-name">日志</span>
               </a>
             </div>
@@ -681,7 +685,7 @@
             
             <div class="site-state-item site-state-tags">
               <a href="/tags/index.html">
-                <span class="site-state-item-count">11</span>
+                <span class="site-state-item-count">13</span>
                 <span class="site-state-item-name">标签</span>
               </a>
             </div>

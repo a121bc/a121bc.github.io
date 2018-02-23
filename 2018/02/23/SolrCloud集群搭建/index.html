@@ -78,7 +78,7 @@
 <link href="/css/main.css?v=5.1.2" rel="stylesheet" type="text/css" />
 
 
-  <meta name="keywords" content="MyBatis,逆向工程,Java," />
+  <meta name="keywords" content="solr,分布式,集群," />
 
 
 
@@ -94,22 +94,25 @@
 
 
 
-<meta name="description" content="在最近的项目中又一次使用了mybatis，继JDBC和Hibernate的学习和使用之后，最新的一款技术，现在整理下学过的内容。">
-<meta name="keywords" content="MyBatis,逆向工程,Java">
+<meta name="description" content="SolrCloud什么是SolrCloudSolrCloud(solr 云)是Solr提供的分布式搜索方案，当你需要大规模，容错，分布式索引和检索能力时使用 SolrCloud。当一个系统的索引数据量少的时候是不需要使用SolrCloud的，当索引量很大，搜索请求并发很高，这时需要使用SolrCloud来满足这些需求。">
+<meta name="keywords" content="solr,分布式,集群">
 <meta property="og:type" content="article">
-<meta property="og:title" content="MyBatis逆向工程">
-<meta property="og:url" content="https://a121bc.github.io/2018/02/21/MyBatis逆向工程/index.html">
+<meta property="og:title" content="SolrCloud集群搭建">
+<meta property="og:url" content="https://a121bc.github.io/2018/02/23/SolrCloud集群搭建/index.html">
 <meta property="og:site_name" content="A121BC&#39;s Notes">
-<meta property="og:description" content="在最近的项目中又一次使用了mybatis，继JDBC和Hibernate的学习和使用之后，最新的一款技术，现在整理下学过的内容。">
+<meta property="og:description" content="SolrCloud什么是SolrCloudSolrCloud(solr 云)是Solr提供的分布式搜索方案，当你需要大规模，容错，分布式索引和检索能力时使用 SolrCloud。当一个系统的索引数据量少的时候是不需要使用SolrCloud的，当索引量很大，搜索请求并发很高，这时需要使用SolrCloud来满足这些需求。">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:image" content="https://a121bc.github.io/2018/02/21/MyBatis逆向工程/mybatis-logo.png">
-<meta property="og:image" content="https://a121bc.github.io/2018/02/21/MyBatis逆向工程/pojo.jpg">
-<meta property="og:image" content="https://a121bc.github.io/2018/02/21/MyBatis逆向工程/dao.jpg">
-<meta property="og:updated_time" content="2018-02-21T03:04:45.605Z">
+<meta property="og:image" content="https://a121bc.github.io/2018/02/23/SolrCloud集群搭建/SolrCloud例子.jpg">
+<meta property="og:image" content="https://a121bc.github.io/2018/02/23/SolrCloud集群搭建/SolrCloud结构图.jpg">
+<meta property="og:image" content="https://a121bc.github.io/2018/02/23/SolrCloud集群搭建/solrxml.jpg">
+<meta property="og:image" content="https://a121bc.github.io/2018/02/23/SolrCloud集群搭建/solr.jpg">
+<meta property="og:image" content="https://a121bc.github.io/2018/02/23/SolrCloud集群搭建/solr2.jpg">
+<meta property="og:image" content="https://a121bc.github.io/2018/02/23/SolrCloud集群搭建/solr3.jpg">
+<meta property="og:updated_time" content="2018-02-23T06:27:38.739Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="MyBatis逆向工程">
-<meta name="twitter:description" content="在最近的项目中又一次使用了mybatis，继JDBC和Hibernate的学习和使用之后，最新的一款技术，现在整理下学过的内容。">
-<meta name="twitter:image" content="https://a121bc.github.io/2018/02/21/MyBatis逆向工程/mybatis-logo.png">
+<meta name="twitter:title" content="SolrCloud集群搭建">
+<meta name="twitter:description" content="SolrCloud什么是SolrCloudSolrCloud(solr 云)是Solr提供的分布式搜索方案，当你需要大规模，容错，分布式索引和检索能力时使用 SolrCloud。当一个系统的索引数据量少的时候是不需要使用SolrCloud的，当索引量很大，搜索请求并发很高，这时需要使用SolrCloud来满足这些需求。">
+<meta name="twitter:image" content="https://a121bc.github.io/2018/02/23/SolrCloud集群搭建/SolrCloud例子.jpg">
 
 
 
@@ -138,13 +141,13 @@
 
 
 
-  <link rel="canonical" href="https://a121bc.github.io/2018/02/21/MyBatis逆向工程/"/>
+  <link rel="canonical" href="https://a121bc.github.io/2018/02/23/SolrCloud集群搭建/"/>
 
 
 
 
 
-  <title>MyBatis逆向工程 | A121BC's Notes</title>
+  <title>SolrCloud集群搭建 | A121BC's Notes</title>
   
 
 
@@ -321,7 +324,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="https://a121bc.github.io/2018/02/21/MyBatis逆向工程/">
+    <link itemprop="mainEntityOfPage" href="https://a121bc.github.io/2018/02/23/SolrCloud集群搭建/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="a121bc">
@@ -338,7 +341,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">MyBatis逆向工程</h1>
+          <h1 class="post-title" itemprop="name headline">SolrCloud集群搭建</h1>
         
 
         <div class="post-meta">
@@ -350,8 +353,8 @@
               
                 <span class="post-meta-item-text">发表于</span>
               
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-02-21T09:26:45+08:00">
-                2018-02-21
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-02-23T10:53:59+08:00">
+                2018-02-23
               </time>
             
 
@@ -390,7 +393,7 @@
 
           
           
-             <span id="/2018/02/21/MyBatis逆向工程/" class="leancloud_visitors" data-flag-title="MyBatis逆向工程">
+             <span id="/2018/02/23/SolrCloud集群搭建/" class="leancloud_visitors" data-flag-title="SolrCloud集群搭建">
                <span class="post-meta-divider">|</span>
                <span class="post-meta-item-icon">
                  <i class="fa fa-eye"></i>
@@ -421,39 +424,89 @@
       
 
       
-        <p><img src="/2018/02/21/MyBatis逆向工程/mybatis-logo.png" alt="logo"></p>
-<p>在最近的项目中又一次使用了mybatis，继JDBC和Hibernate的学习和使用之后，最新的一款技术，现在整理下学过的内容。</p>
+        <h2 id="SolrCloud"><a href="#SolrCloud" class="headerlink" title="SolrCloud"></a>SolrCloud</h2><h3 id="什么是SolrCloud"><a href="#什么是SolrCloud" class="headerlink" title="什么是SolrCloud"></a>什么是SolrCloud</h3><p>SolrCloud(solr 云)是Solr提供的分布式搜索方案，当你需要大规模，容错，分布式索引和检索能力时使用 SolrCloud。当一个系统的索引数据量少的时候是不需要使用SolrCloud的，当索引量很大，搜索请求并发很高，这时需要使用SolrCloud来满足这些需求。</p>
 <a id="more"></a>
-<h2 id="数据库技术回顾"><a href="#数据库技术回顾" class="headerlink" title="数据库技术回顾"></a>数据库技术回顾</h2><h3 id="回顾JDBC开发"><a href="#回顾JDBC开发" class="headerlink" title="回顾JDBC开发"></a>回顾JDBC开发</h3><ul>
-<li>优点：简单易学，上手快，非常灵活的构建SQL，效率高</li>
-<li>缺点：代码繁琐，难以卸除高质量的代码（例如：资源释放，SQL注入安全性等），开发者既要写业务逻辑，又要写对象的创建和销毁，必须懂底层数据库的语法（例如：分页）。</li>
-<li>适用于超大批量数据的操作，速度快</li>
-</ul>
-<h3 id="回顾Hibernate"><a href="#回顾Hibernate" class="headerlink" title="回顾Hibernate"></a>回顾Hibernate</h3><ul>
-<li>优点：不用写SQL，完全以面向对象的方式设计和访问，不用管底层具体数据库的语法，（例如：分页）便于理解。</li>
-<li>缺点：处理复杂业务时，灵活度差,复杂的HQL难写难理解，例如多表查询的HQL语句。</li>
-<li>适合于中小批量数据的操作，速度慢。</li>
-</ul>
-<h2 id="MyBatis"><a href="#MyBatis" class="headerlink" title="MyBatis"></a>MyBatis</h2><p>基于上述二种支持，我们需要在中间找到一个平衡点呢？结合它们的优点，摒弃它们的缺点，这就是MyBatis，现今MyBatis被广泛的企业所采用。</p>
-<h3 id="什么是MyBatis"><a href="#什么是MyBatis" class="headerlink" title="什么是MyBatis"></a>什么是MyBatis</h3><p>MyBatis 是一款一流的支持自定义 SQL、存储过程和高级映射的持久化框架。MyBatis几乎消除了所有的JDBC代码，也基本不需要手工去设置参数和获取检索结果。MyBatis能够使用简单的XML格式或者注解进行来配置，能够映射基本数据元素、Map 接口和POJOs（普通java对象）到数据库中的记录。</p>
-<p>MyBatis本是apache的一个开源项目iBatis, 2010年这个项目由apache software foundation迁移到了googlecode，并且改名为MyBatis。2013年11月迁移到Github。</p>
-<p>iBATIS一词来源于“internet”和“abatis”的组合，是一个基于Java的持久层框架。iBATIS提供的持久层框架包括SQL Maps和Data Access Objects（DAO）。</p>
-<p>jdbc/dbutils/springdao，hibernate/springorm，mybaits同属于ORM解决方案之一。</p>
-<h2 id="逆向工程"><a href="#逆向工程" class="headerlink" title="逆向工程"></a>逆向工程</h2><h3 id="jar包"><a href="#jar包" class="headerlink" title="jar包"></a>jar包</h3><p>使用逆向工程生成代码，首先需要jar包，可以去github下载。<br><a href="https://github.com/mybatis/generator/releases" target="_blank" rel="noopener">MyBatis Generator Release</a></p>
-<h3 id="配置文件"><a href="#配置文件" class="headerlink" title="配置文件"></a>配置文件</h3><p>准备配置文件，配置文件要告诉逆向工程：</p>
+<p>SolrCloud是基于Solr和Zookeeper的分布式搜索方案，它的主要思想是使用Zookeeper作为集群的配置信息中心。<br>它有几个特色功能：</p>
 <ul>
-<li>如何连接到数据库</li>
-<li>要生成哪些对象，以及如何生成他们</li>
-<li>哪些表用于对象生成</li>
+<li>集中式的配置信息</li>
+<li>自动容错</li>
+<li>近实时搜索</li>
+<li>查询时自动负载均衡</li>
 </ul>
-<p>以下为官方的配置文件示例：</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br></pre></td><td class="code"><pre><span class="line">&lt;?xml version=<span class="string">"1.0"</span> encoding=<span class="string">"UTF-8"</span>?&gt;</span><br><span class="line">&lt;!DOCTYPE generatorConfiguration</span><br><span class="line">  PUBLIC <span class="string">"-//mybatis.org//DTD MyBatis Generator Configuration 1.0//EN"</span></span><br><span class="line">  <span class="string">"http://mybatis.org/dtd/mybatis-generator-config_1_0.dtd"</span>&gt;</span><br><span class="line"></span><br><span class="line">&lt;generatorConfiguration&gt;</span><br><span class="line">  &lt;classPathEntry location=<span class="string">"/Program Files/IBM/SQLLIB/java/db2java.zip"</span> /&gt;</span><br><span class="line"></span><br><span class="line">  &lt;context id=<span class="string">"DB2Tables"</span> targetRuntime=<span class="string">"MyBatis3"</span>&gt;</span><br><span class="line">    &lt;jdbcConnection driverClass=<span class="string">"COM.ibm.db2.jdbc.app.DB2Driver"</span></span><br><span class="line">        connectionURL=<span class="string">"jdbc:db2:TEST"</span></span><br><span class="line">        userId=<span class="string">"db2admin"</span></span><br><span class="line">        password=<span class="string">"db2admin"</span>&gt;</span><br><span class="line">    &lt;/jdbcConnection&gt;</span><br><span class="line"></span><br><span class="line">    &lt;javaTypeResolver &gt;</span><br><span class="line">      &lt;property name=<span class="string">"forceBigDecimals"</span> value=<span class="string">"false"</span> /&gt;</span><br><span class="line">    &lt;/javaTypeResolver&gt;</span><br><span class="line"></span><br><span class="line">    &lt;javaModelGenerator targetPackage=<span class="string">"test.model"</span> targetProject=<span class="string">"\MBGTestProject\src"</span>&gt;</span><br><span class="line">      &lt;property name=<span class="string">"enableSubPackages"</span> value=<span class="string">"true"</span> /&gt;</span><br><span class="line">      &lt;property name=<span class="string">"trimStrings"</span> value=<span class="string">"true"</span> /&gt;</span><br><span class="line">    &lt;/javaModelGenerator&gt;</span><br><span class="line"></span><br><span class="line">    &lt;sqlMapGenerator targetPackage=<span class="string">"test.xml"</span>  targetProject=<span class="string">"\MBGTestProject\src"</span>&gt;</span><br><span class="line">      &lt;property name=<span class="string">"enableSubPackages"</span> value=<span class="string">"true"</span> /&gt;</span><br><span class="line">    &lt;/sqlMapGenerator&gt;</span><br><span class="line"></span><br><span class="line">    &lt;javaClientGenerator <span class="built_in">type</span>=<span class="string">"XMLMAPPER"</span> targetPackage=<span class="string">"test.dao"</span>  targetProject=<span class="string">"\MBGTestProject\src"</span>&gt;</span><br><span class="line">      &lt;property name=<span class="string">"enableSubPackages"</span> value=<span class="string">"true"</span> /&gt;</span><br><span class="line">    &lt;/javaClientGenerator&gt;</span><br><span class="line"></span><br><span class="line">    &lt;table schema=<span class="string">"DB2ADMIN"</span> tableName=<span class="string">"ALLTYPES"</span> domainObjectName=<span class="string">"Customer"</span> &gt;</span><br><span class="line">      &lt;property name=<span class="string">"useActualColumnNames"</span> value=<span class="string">"true"</span>/&gt;</span><br><span class="line">      &lt;generatedKey column=<span class="string">"ID"</span> sqlStatement=<span class="string">"DB2"</span> identity=<span class="string">"true"</span> /&gt;</span><br><span class="line">      &lt;columnOverride column=<span class="string">"DATE_FIELD"</span> property=<span class="string">"startDate"</span> /&gt;</span><br><span class="line">      &lt;ignoreColumn column=<span class="string">"FRED"</span> /&gt;</span><br><span class="line">      &lt;columnOverride column=<span class="string">"LONG_VARCHAR_FIELD"</span> jdbcType=<span class="string">"VARCHAR"</span> /&gt;</span><br><span class="line">    &lt;/table&gt;</span><br><span class="line"></span><br><span class="line">  &lt;/context&gt;</span><br><span class="line">&lt;/generatorConfiguration&gt;</span><br></pre></td></tr></table></figure>
-<p>下面是某项目的配置文件：</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br></pre></td><td class="code"><pre><span class="line">&lt;?xml version=<span class="string">"1.0"</span> encoding=<span class="string">"UTF-8"</span>?&gt;</span><br><span class="line">&lt;!DOCTYPE generatorConfiguration</span><br><span class="line">  PUBLIC <span class="string">"-//mybatis.org//DTD MyBatis Generator Configuration 1.0//EN"</span></span><br><span class="line">  <span class="string">"http://mybatis.org/dtd/mybatis-generator-config_1_0.dtd"</span>&gt;</span><br><span class="line"></span><br><span class="line">&lt;generatorConfiguration&gt;</span><br><span class="line">	&lt;context id=<span class="string">"testTables"</span> targetRuntime=<span class="string">"MyBatis3"</span>&gt;</span><br><span class="line">		&lt;commentGenerator <span class="built_in">type</span>=<span class="string">"org.mybatis.generator.plugins.comment.MyCommentGenerator"</span>&gt;</span><br><span class="line">			&lt;!-- 是否去除自动生成的注释 <span class="literal">true</span>：是 ： <span class="literal">false</span>:否 </span><br><span class="line">			&lt;property name=<span class="string">"suppressAllComments"</span> value=<span class="string">"true"</span> /&gt;</span><br><span class="line">			--&gt;</span><br><span class="line">		&lt;/commentGenerator&gt;</span><br><span class="line">		</span><br><span class="line">		&lt;!--数据库连接的信息：驱动类、连接地址、用户名、密码 --&gt;</span><br><span class="line">		&lt;jdbcConnection driverClass=<span class="string">"com.mysql.jdbc.Driver"</span></span><br><span class="line">			connectionURL=<span class="string">"jdbc:mysql://localhost:3306/[数据库名]"</span> userId=<span class="string">"root"</span></span><br><span class="line">			password=<span class="string">"root"</span>&gt;</span><br><span class="line">		&lt;/jdbcConnection&gt;</span><br><span class="line"></span><br><span class="line">		&lt;!-- 默认<span class="literal">false</span>，把JDBC DECIMAL 和 NUMERIC 类型解析为 Integer，为 <span class="literal">true</span>时把JDBC DECIMAL 和 </span><br><span class="line">			NUMERIC 类型解析为java.math.BigDecimal --&gt;</span><br><span class="line">		&lt;javaTypeResolver&gt;</span><br><span class="line">			&lt;property name=<span class="string">"forceBigDecimals"</span> value=<span class="string">"false"</span> /&gt;</span><br><span class="line">		&lt;/javaTypeResolver&gt;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">		&lt;!-- targetProject:生成PO类的位置 --&gt;</span><br><span class="line">		&lt;javaModelGenerator targetPackage=<span class="string">"com.[项目名].pojo"</span></span><br><span class="line">			targetProject=<span class="string">".\src"</span>&gt;</span><br><span class="line">			&lt;!-- enableSubPackages:是否让schema作为包的后缀 --&gt;</span><br><span class="line">			&lt;property name=<span class="string">"enableSubPackages"</span> value=<span class="string">"false"</span> /&gt;</span><br><span class="line">			&lt;!-- 从数据库返回的值被清理前后的空格 --&gt;</span><br><span class="line">			&lt;property name=<span class="string">"trimStrings"</span> value=<span class="string">"true"</span> /&gt;</span><br><span class="line">		&lt;/javaModelGenerator&gt;</span><br><span class="line"></span><br><span class="line">        &lt;!-- targetProject:mapper映射文件生成的位置 --&gt;</span><br><span class="line">		&lt;sqlMapGenerator targetPackage=<span class="string">"com.[项目名].dao"</span> </span><br><span class="line">			targetProject=<span class="string">".\src"</span>&gt;</span><br><span class="line">			&lt;!-- enableSubPackages:是否让schema作为包的后缀 --&gt;</span><br><span class="line">			&lt;property name=<span class="string">"enableSubPackages"</span> value=<span class="string">"false"</span> /&gt;</span><br><span class="line">		&lt;/sqlMapGenerator&gt;</span><br><span class="line">		&lt;!-- targetPackage：mapper接口生成的位置 --&gt;</span><br><span class="line">		&lt;javaClientGenerator <span class="built_in">type</span>=<span class="string">"XMLMAPPER"</span></span><br><span class="line">			targetPackage=<span class="string">"com.[项目名].dao"</span> </span><br><span class="line">			targetProject=<span class="string">".\src"</span>&gt;</span><br><span class="line">			&lt;!-- enableSubPackages:是否让schema作为包的后缀 --&gt;</span><br><span class="line">			&lt;property name=<span class="string">"enableSubPackages"</span> value=<span class="string">"true"</span> /&gt;</span><br><span class="line">		&lt;/javaClientGenerator&gt;</span><br><span class="line">		</span><br><span class="line">	&lt;!-- 指定数据库表 --&gt;</span><br><span class="line">		&lt;table schema=<span class="string">""</span> tableName=<span class="string">"tb_content"</span>&gt;&lt;/table&gt;</span><br><span class="line">		&lt;table schema=<span class="string">""</span> tableName=<span class="string">"tb_content_category"</span>&gt;&lt;/table&gt;</span><br><span class="line">		&lt;table schema=<span class="string">""</span> tableName=<span class="string">"tb_item"</span>&gt;&lt;/table&gt;</span><br><span class="line">		&lt;table schema=<span class="string">""</span> tableName=<span class="string">"tb_item_cat"</span>&gt;&lt;/table&gt;</span><br><span class="line">		&lt;table schema=<span class="string">""</span> tableName=<span class="string">"tb_item_desc"</span>&gt;&lt;/table&gt;</span><br><span class="line">		&lt;table schema=<span class="string">""</span> tableName=<span class="string">"tb_item_param"</span>&gt;&lt;/table&gt;</span><br><span class="line">		&lt;table schema=<span class="string">""</span> tableName=<span class="string">"tb_item_param_item"</span>&gt;&lt;/table&gt;</span><br><span class="line">		&lt;table schema=<span class="string">""</span> tableName=<span class="string">"tb_order"</span>&gt;&lt;/table&gt;</span><br><span class="line">		&lt;table schema=<span class="string">""</span> tableName=<span class="string">"tb_order_item"</span>&gt;&lt;/table&gt;</span><br><span class="line">		&lt;table schema=<span class="string">""</span> tableName=<span class="string">"tb_order_shipping"</span>&gt;&lt;/table&gt;</span><br><span class="line">		&lt;table schema=<span class="string">""</span> tableName=<span class="string">"tb_user"</span>&gt;&lt;/table&gt;</span><br><span class="line">	&lt;/context&gt;</span><br><span class="line">&lt;/generatorConfiguration&gt;</span><br></pre></td></tr></table></figure>
-<h3 id="JAVA程序"><a href="#JAVA程序" class="headerlink" title="JAVA程序"></a>JAVA程序</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br></pre></td><td class="code"><pre><span class="line">import java.io.File;</span><br><span class="line">import java.util.ArrayList;</span><br><span class="line">import java.util.List;</span><br><span class="line"></span><br><span class="line">import org.mybatis.generator.api.MyBatisGenerator;</span><br><span class="line">import org.mybatis.generator.config.Configuration;</span><br><span class="line">import org.mybatis.generator.config.xml.ConfigurationParser;</span><br><span class="line">import org.mybatis.generator.internal.DefaultShellCallback;</span><br><span class="line"></span><br><span class="line">public class GeneratorSqlmap &#123;</span><br><span class="line"></span><br><span class="line">	public void generator() throws Exception&#123;</span><br><span class="line"></span><br><span class="line">		List&lt;String&gt; warnings = new ArrayList&lt;String&gt;();</span><br><span class="line">		boolean overwrite = <span class="literal">true</span>;</span><br><span class="line">		File configFile = new File(<span class="string">"generatorConfig.xml"</span>); </span><br><span class="line">		ConfigurationParser cp = new ConfigurationParser(warnings);</span><br><span class="line">		Configuration config = cp.parseConfiguration(configFile);</span><br><span class="line">		DefaultShellCallback callback = new DefaultShellCallback(overwrite);</span><br><span class="line">		MyBatisGenerator myBatisGenerator = new MyBatisGenerator(config,</span><br><span class="line">				callback, warnings);</span><br><span class="line">		myBatisGenerator.generate(null);</span><br><span class="line"></span><br><span class="line">	&#125; </span><br><span class="line">	public static void main(String[] args) throws Exception &#123;</span><br><span class="line">		try &#123;</span><br><span class="line">			GeneratorSqlmap generatorSqlmap = new GeneratorSqlmap();</span><br><span class="line">			generatorSqlmap.generator();</span><br><span class="line">		&#125; catch (Exception e) &#123;</span><br><span class="line">			e.printStackTrace();</span><br><span class="line">		&#125;</span><br><span class="line">		</span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p>运行java程序后，即可在 com.[项目名].pojo 包下生成接口文件，com.[项目名].dao 包下生成映射文件，复制到对应项目中即可使用。</p>
-<p><img src="/2018/02/21/MyBatis逆向工程/pojo.jpg" alt="logo"> <img src="/2018/02/21/MyBatis逆向工程/dao.jpg" alt="logo"></p>
-
+<p><em>zookeeper是个什么玩意？</em><br>顾名思义zookeeper就是动物园管理员，他是用来管hadoop（大象）、Hive(蜜蜂)、pig(小猪)的管理员， Apache Hbase和 Apache Solr 的分布式集群都用到了zookeeper；Zookeeper:是一个分布式的、开源的程序协调服务，是hadoop项目下的一个子项目。</p>
+<h3 id="SolrCloud结构"><a href="#SolrCloud结构" class="headerlink" title="SolrCloud结构"></a>SolrCloud结构</h3><p>SolrCloud为了降低单机的处理压力，需要由多台服务器共同来完成索引和搜索任务。实现的思路是将索引数据进行Shard（分片）拆分，每个分片由多台的服务器共同完成，当一个索引或搜索请求过来时会分别从不同的Shard的服务器中操作索引。<br>SolrCloud需要Solr基于Zookeeper部署，Zookeeper是一个集群管理软件，由于SolrCloud需要由多台服务器组成，由zookeeper来进行协调管理。<br>下图是一个SolrCloud应用的例子：</p>
+<p><img src="/2018/02/23/SolrCloud集群搭建/SolrCloud例子.jpg" alt="SolrCloud例子"></p>
+<ul>
+<li>物理结构<br>  三个Solr实例（ 每个实例包括两个Core），组成一个SolrCloud。</li>
+<li>逻辑结构<br>  索引集合包括两个Shard（shard1和shard2），shard1和shard2分别由三个Core组成，其中一个Leader两个Replication，Leader是由zookeeper选举产生，zookeeper控制每个shard上三个Core的索引数据一致，解决高可用问题。<br>  用户发起索引请求分别从shard1和shard2上获取，解决高并发问题。<ul>
+<li>Collection<br>  Collection在SolrCloud集群中是一个逻辑意义上的完整的索引结构。它常常被划分为一个或多个Shard（分片），它们使用相同的配置信息。<br>  比如：针对商品信息搜索可以创建一个collection。<br>   collection=shard1+shard2+….+shardX<ul>
+<li>Core<br> 每个Core是Solr中一个独立运行单位，提供 索引和搜索服务。一个shard需要由一个Core或多个Core组成。由于collection由多个shard组成所以collection一般由多个core组成。</li>
+<li>Master或Slave<br> Master是master-slave结构中的主结点（通常说主服务器），Slave是master-slave结构中的从结点（通常说从服务器或备服务器）。同一个Shard下master和slave存储的数据是一致的，这是为了达到高可用目的。</li>
+<li>Shard<br> Collection的逻辑分片。每个Shard被化成一个或者多个replication，通过选举确定哪个是Leader。</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<h2 id="SolrCloud搭建"><a href="#SolrCloud搭建" class="headerlink" title="SolrCloud搭建"></a>SolrCloud搭建</h2><p>本教程的这套安装是单机版的安装，所以采用伪集群的方式进行安装，如果是真正的生成环境，将伪集群的ip改下就可以了，步骤是一样的。<br>SolrCloud结构图如下：<br><img src="/2018/02/23/SolrCloud集群搭建/SolrCloud结构图.jpg" alt="SolrCloud结构图"></p>
+<h3 id="环境准备"><a href="#环境准备" class="headerlink" title="环境准备"></a>环境准备</h3><p>CentOS-6.4-i386-bin-DVD1.iso<br>jdk-7u72-linux-i586.tar.gz<br>apache-tomcat-7.0.47.tar.gz<br>zookeeper-3.4.6.tar.gz<br>solr-4.10.3.tgz</p>
+<h3 id="环境安装"><a href="#环境安装" class="headerlink" title="环境安装"></a>环境安装</h3><p>请先安装好CentOS 6.4和jdk7，这里不再重复。<br>开始安装zookeeper集群：</p>
+<ul>
+<li>解压zookeeper，tar -zxvf zookeeper-3.4.6.tar.gz将zookeeper-3.4.6拷贝到/usr/local/solrcloud下，复制三份分别并将目录名改为zookeeper1、zookeeper2、zookeeper3</li>
+<li>进入zookeeper1文件夹，创建data目录。并在data目录中创建一个myid文件内容为“1”（echo 1 &gt;&gt; data/myid）。</li>
+<li>进入conf文件夹，把zoo_sample.cfg改名为zoo.cfg</li>
+<li>修改zoo.cfg。</li>
+</ul>
+<p>修改：<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">dataDir=/usr/<span class="built_in">local</span>/solrcloud/zookeeper1/data</span><br><span class="line">clientPort=2181（zookeeper2中为2182、zookeeper3中为2183）</span><br></pre></td></tr></table></figure></p>
+<p>添加：<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">server.1=192.168.25.150:2881:3881</span><br><span class="line">server.2=192.168.25.150:2882:3882</span><br><span class="line">server.3=192.168.25.150:2883:3883</span><br></pre></td></tr></table></figure></p>
+<p>效果如下：<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># The number of milliseconds of each tick</span></span><br><span class="line">tickTime=2000</span><br><span class="line"><span class="comment"># The number of ticks that the initial </span></span><br><span class="line"><span class="comment"># synchronization phase can take</span></span><br><span class="line">initLimit=10</span><br><span class="line"><span class="comment"># The number of ticks that can pass between </span></span><br><span class="line"><span class="comment"># sending a request and getting an acknowledgement</span></span><br><span class="line">syncLimit=5</span><br><span class="line"><span class="comment"># the directory where the snapshot is stored.</span></span><br><span class="line"><span class="comment"># do not use /tmp for storage, /tmp here is just </span></span><br><span class="line"><span class="comment"># example sakes.</span></span><br><span class="line">dataDir=/usr/<span class="built_in">local</span>/solrcloud/zookeeper1/data</span><br><span class="line"><span class="comment"># the port at which the clients will connect</span></span><br><span class="line">clientPort=2181</span><br><span class="line"><span class="comment"># the maximum number of client connections.</span></span><br><span class="line"><span class="comment"># increase this if you need to handle more clients</span></span><br><span class="line"><span class="comment">#maxClientCnxns=60</span></span><br><span class="line"><span class="comment">#</span></span><br><span class="line"><span class="comment"># Be sure to read the maintenance section of the </span></span><br><span class="line"><span class="comment"># administrator guide before turning on autopurge.</span></span><br><span class="line"><span class="comment">#</span></span><br><span class="line"><span class="comment"># http://zookeeper.apache.org/doc/current/zookeeperAdmin.html#sc_maintenance</span></span><br><span class="line"><span class="comment">#</span></span><br><span class="line"><span class="comment"># The number of snapshots to retain in dataDir</span></span><br><span class="line"><span class="comment">#autopurge.snapRetainCount=3</span></span><br><span class="line"><span class="comment"># Purge task interval in hours</span></span><br><span class="line"><span class="comment"># Set to "0" to disable auto purge feature</span></span><br><span class="line"><span class="comment">#autopurge.purgeInterval=1</span></span><br><span class="line">server.1=192.168.25.150:2881:3881</span><br><span class="line">server.2=192.168.25.150:2882:3882</span><br><span class="line">server.3=192.168.25.150:2883:3883</span><br></pre></td></tr></table></figure></p>
+<ul>
+<li><p>对zookeeper2、3中的设置做第二步至第四步修改。<br>zookeeper2myid内容为2:<br><code>dataDir=/usr/local/solrcloud/zookeeper2/data</code><br>clientPort=2182<br>Zookeeper3的myid内容为3:<br><code>dataDir=/usr/local/solrcloud/zookeeper3/data
+clientPort=2183</code></p>
+</li>
+<li><p>启动三个zookeeper</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">/usr/<span class="built_in">local</span>/solrcloud/zookeeper1/bin/zkServer.sh start</span><br><span class="line">/usr/<span class="built_in">local</span>/solrcloud/zookeeper2/bin/zkServer.sh start</span><br><span class="line">/usr/<span class="built_in">local</span>/solrcloud/zookeeper3/bin/zkServer.sh start</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>查看集群的状态</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">/usr/<span class="built_in">local</span>/solrcloud/zookeeper1/bin/zkServer.sh status</span><br><span class="line">/usr/<span class="built_in">local</span>/solrcloud/zookeeper2/bin/zkServer.sh status</span><br><span class="line">/usr/<span class="built_in">local</span>/solrcloud/zookeeper3/bin/zkServer.sh status</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>开启zookeeper用到的端口，或者直接关闭防火墙。<code>service iptables stop</code></p>
+</li>
+</ul>
+<h3 id="tomcat安装"><a href="#tomcat安装" class="headerlink" title="tomcat安装"></a>tomcat安装</h3><ul>
+<li>将apache-tomcat-7.0.47.tar.gz解压 ‘tar -zxvf apache-tomcat-7.0.47.tar.gz’</li>
+<li><p>把解压后的tomcat复制到/usr/local/solrcloud/目录下复制四份。</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">/usr/<span class="built_in">local</span>/solrcloud/tomcat1</span><br><span class="line">/usr/<span class="built_in">local</span>/solrcloud/tomcat2</span><br><span class="line">/usr/<span class="built_in">local</span>/solrcloud/tomcat3</span><br><span class="line">/usr/<span class="built_in">local</span>/solrcloud/tomcat4</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>修改tomcat的server.xml，把其中的端口后都加一。保证两个tomcat可以正常运行不发生端口冲突。<code>vim tomcat2/conf/server.xml</code></p>
+</li>
+</ul>
+<h3 id="SolrCloud部署"><a href="#SolrCloud部署" class="headerlink" title="SolrCloud部署"></a>SolrCloud部署</h3><ul>
+<li>启动zookeeper<br>solrCloud部署依赖zookeeper，需要先启动每一台zookeeper服务器。</li>
+<li>zookeeper管理配置文件<br>由于zookeeper统一管理solr的配置文件（主要是schema.xml、solrconfig.xml）， solrCloud各各节点使用zookeeper管理的配置文件。</li>
+</ul>
+<p>将上边部署的solr单机的conf拷贝到/home/solr下。<br>执行下边的命令将/home/solr/conf下的配置文件上传到zookeeper，此命令在solr-4.10.3/example/scripts/cloud-scripts/目录下：<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">./zkcli.sh -zkhost 192.168.25.150:2181,192.168.25.150:2182,192.168.25.150:2183 -cmd upconfig -confdir /usr/<span class="built_in">local</span>/solrcloud/solrhome1/collection1/conf -confname myconf</span><br></pre></td></tr></table></figure></p>
+<p>登录zookeeper服务器查询配置文件:<br><code>cd /usr/local/zookeeper/bin</code><br><code>./zkCli.sh</code></p>
+<ul>
+<li><p>修改SolrCloud监控端口为8080:<br>修改每个solrhome的solr.xml文件。<br><img src="/2018/02/23/SolrCloud集群搭建/solrxml.jpg" alt="solrxml"></p>
+</li>
+<li><p>每一台solr和zookeeper关联<br>修改每一台solr的tomcat 的 bin目录下catalina.sh文件中加入DzkHost指定zookeeper服务器地址：<br><code>JAVA_OPTS=&quot;-DzkHost=192.168.25.150:2181,192.168.25.150:2182,192.168.25.150:2183&quot;</code></p>
+</li>
+<li>启动所有solr服务<br>启动每一台solr的tomcat服务。</li>
+<li>访问SolrCloud</li>
+<li>访问任意一台solr，左侧菜单出现Cloud：</li>
+</ul>
+<p><img src="/2018/02/23/SolrCloud集群搭建/solr.jpg" alt="solr"></p>
+<ul>
+<li>SolrCloud集群配置<br>上图中的collection1集群只有一片，可以通过下边的方法配置新的集群。<br>如果集群中有四个solr节点创建新集群collection2，将集群分为两片，每片两个副本。<code>http://192.168.25.150:8080/solr/admin/collections?action=CREATE&amp;name=collection2&amp;numShards=2&amp;replicationFactor=2</code></li>
+</ul>
+<p><img src="/2018/02/23/SolrCloud集群搭建/solr2.jpg" alt="solr2"></p>
+<p>删除集群命令:<br><code>http://192.168.25.150:8080/solr/admin/collections?action=DELETE&amp;name=collection1</code><br>执行后原来的collection1删除，如下：</p>
+<p><img src="/2018/02/23/SolrCloud集群搭建/solr3.jpg" alt="solr3"></p>
+<ul>
+<li>启动SolrCloud注意<br>启动solrCloud需要先启动solrCloud依赖的所有zookeeper服务器，再启动每台solr服务器。</li>
+</ul>
+<h2 id="SolrJ访问SolrCloud"><a href="#SolrJ访问SolrCloud" class="headerlink" title="SolrJ访问SolrCloud"></a>SolrJ访问SolrCloud</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br></pre></td><td class="code"><pre><span class="line">public class SolrCloudTest &#123;</span><br><span class="line">	// zookeeper地址</span><br><span class="line">	private static String zkHostString = <span class="string">"192.168.25.150:2181,192.168.25.150:2182,192.168.25.150:2183"</span>;</span><br><span class="line">	// collection默认名称，比如我的solr服务器上的collection是collection2_shard1_replica1，就是去掉“_shard1_replica1”的名称</span><br><span class="line">	private static String defaultCollection = <span class="string">"collection1"</span>;</span><br><span class="line"></span><br><span class="line">	// cloudSolrServer实际</span><br><span class="line">	private CloudSolrServer cloudSolrServer;</span><br><span class="line"></span><br><span class="line">	// 测试方法之前构造 CloudSolrServer</span><br><span class="line">	@Before</span><br><span class="line">	public void <span class="function"><span class="title">init</span></span>() &#123;</span><br><span class="line">		cloudSolrServer = new CloudSolrServer(zkHostString);</span><br><span class="line">		cloudSolrServer.setDefaultCollection(defaultCollection);</span><br><span class="line">		cloudSolrServer.connect();</span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">	// 向solrCloud上创建索引</span><br><span class="line">	@Test</span><br><span class="line">	public void testCreateIndexToSolrCloud() throws SolrServerException,</span><br><span class="line">			IOException &#123;</span><br><span class="line"></span><br><span class="line">		SolrInputDocument document = new SolrInputDocument();</span><br><span class="line">		document.addField(<span class="string">"id"</span>, <span class="string">"100001"</span>);</span><br><span class="line">		document.addField(<span class="string">"title"</span>, <span class="string">"李四"</span>);</span><br><span class="line">		cloudSolrServer.add(document);</span><br><span class="line">		cloudSolrServer.commit();</span><br><span class="line"></span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">	// 搜索索引</span><br><span class="line">	@Test</span><br><span class="line">	public void testSearchIndexFromSolrCloud() throws Exception &#123;</span><br><span class="line"></span><br><span class="line">		SolrQuery query = new SolrQuery();</span><br><span class="line">		query.setQuery(<span class="string">"*:*"</span>);</span><br><span class="line">		try &#123;</span><br><span class="line">			QueryResponse response = cloudSolrServer.query(query);</span><br><span class="line">			SolrDocumentList docs = response.getResults();</span><br><span class="line"></span><br><span class="line">			System.out.println(<span class="string">"文档个数："</span> + docs.getNumFound());</span><br><span class="line">			System.out.println(<span class="string">"查询时间："</span> + response.getQTime());</span><br><span class="line"></span><br><span class="line">			<span class="keyword">for</span> (SolrDocument doc : docs) &#123;</span><br><span class="line">				ArrayList title = (ArrayList) doc.getFieldValue(<span class="string">"title"</span>);</span><br><span class="line">				String id = (String) doc.getFieldValue(<span class="string">"id"</span>);</span><br><span class="line">				System.out.println(<span class="string">"id: "</span> + id);</span><br><span class="line">				System.out.println(<span class="string">"title: "</span> + title);</span><br><span class="line">				System.out.println();</span><br><span class="line">			&#125;</span><br><span class="line">		&#125; catch (SolrServerException e) &#123;</span><br><span class="line">			e.printStackTrace();</span><br><span class="line">		&#125; catch (Exception e) &#123;</span><br><span class="line">			System.out.println(<span class="string">"Unknowned Exception!!!!"</span>);</span><br><span class="line">			e.printStackTrace();</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">	// 删除索引</span><br><span class="line">	@Test</span><br><span class="line">	public void testDeleteIndexFromSolrCloud() throws SolrServerException, IOException &#123;</span><br><span class="line"></span><br><span class="line">		// 根据id删除</span><br><span class="line">		UpdateResponse response = cloudSolrServer.deleteById(<span class="string">"zhangsan"</span>);</span><br><span class="line">		// 根据多个id删除</span><br><span class="line">		// cloudSolrServer.deleteById(ids);</span><br><span class="line">		// 自动查询条件删除</span><br><span class="line">		// cloudSolrServer.deleteByQuery(<span class="string">"product_keywords:教程"</span>);</span><br><span class="line">		// 提交</span><br><span class="line">		cloudSolrServer.commit();</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
       
     </div>
     
@@ -470,11 +523,11 @@
       
         <div class="post-tags">
           
-            <a href="/tags/MyBatis/" rel="tag"># MyBatis</a>
+            <a href="/tags/solr/" rel="tag"># solr</a>
           
-            <a href="/tags/逆向工程/" rel="tag"># 逆向工程</a>
+            <a href="/tags/分布式/" rel="tag"># 分布式</a>
           
-            <a href="/tags/Java/" rel="tag"># Java</a>
+            <a href="/tags/集群/" rel="tag"># 集群</a>
           
         </div>
       
@@ -487,8 +540,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2018/02/19/你好，Hexo/" rel="next" title="你好，Hexo">
-                <i class="fa fa-chevron-left"></i> 你好，Hexo
+              <a href="/2018/02/22/搭建图片服务器/" rel="next" title="搭建图片服务器">
+                <i class="fa fa-chevron-left"></i> 搭建图片服务器
               </a>
             
           </div>
@@ -496,10 +549,6 @@
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
-            
-              <a href="/2018/02/21/Dubbo学习笔记/" rel="prev" title="Dubbo学习笔记">
-                Dubbo学习笔记 <i class="fa fa-chevron-right"></i>
-              </a>
             
           </div>
         </div>
@@ -633,7 +682,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#数据库技术回顾"><span class="nav-number">1.</span> <span class="nav-text">数据库技术回顾</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#回顾JDBC开发"><span class="nav-number">1.1.</span> <span class="nav-text">回顾JDBC开发</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#回顾Hibernate"><span class="nav-number">1.2.</span> <span class="nav-text">回顾Hibernate</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#MyBatis"><span class="nav-number">2.</span> <span class="nav-text">MyBatis</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#什么是MyBatis"><span class="nav-number">2.1.</span> <span class="nav-text">什么是MyBatis</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#逆向工程"><span class="nav-number">3.</span> <span class="nav-text">逆向工程</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#jar包"><span class="nav-number">3.1.</span> <span class="nav-text">jar包</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#配置文件"><span class="nav-number">3.2.</span> <span class="nav-text">配置文件</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#JAVA程序"><span class="nav-number">3.3.</span> <span class="nav-text">JAVA程序</span></a></li></ol></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#SolrCloud"><span class="nav-number">1.</span> <span class="nav-text">SolrCloud</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#什么是SolrCloud"><span class="nav-number">1.1.</span> <span class="nav-text">什么是SolrCloud</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#SolrCloud结构"><span class="nav-number">1.2.</span> <span class="nav-text">SolrCloud结构</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#SolrCloud搭建"><span class="nav-number">2.</span> <span class="nav-text">SolrCloud搭建</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#环境准备"><span class="nav-number">2.1.</span> <span class="nav-text">环境准备</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#环境安装"><span class="nav-number">2.2.</span> <span class="nav-text">环境安装</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#tomcat安装"><span class="nav-number">2.3.</span> <span class="nav-text">tomcat安装</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#SolrCloud部署"><span class="nav-number">2.4.</span> <span class="nav-text">SolrCloud部署</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#SolrJ访问SolrCloud"><span class="nav-number">3.</span> <span class="nav-text">SolrJ访问SolrCloud</span></a></li></ol></div>
             
 
           </div>
